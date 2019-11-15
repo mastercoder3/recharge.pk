@@ -39,4 +39,21 @@ export class LoginPage implements OnInit {
       });
   }
 
+  forgotPassword(){
+    let func = (data) =>{
+      this.helper.presentLoading().then( run =>{
+        this.auth.resetPassword(data.email)
+        .then(res =>{
+          this.helper.closeLoading();
+          this.helper.presentToast('Please check your inbox for Password reset Email.');
+        }, err =>{
+          this.helper.closeLoading();
+          this.helper.presentToast(err.message);
+        });
+      });
+    };
+
+    this.helper.presentAlertPrompt(func);
+  }N
+
 }
