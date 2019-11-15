@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HelperService } from 'src/app/services/helper.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ApiService } from 'src/app/services/api.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class RegisterPage implements OnInit {
 
   form: FormGroup;
-  constructor(private fb: FormBuilder, private helper: HelperService, private auth: AuthService, private api: ApiService) { }
+  constructor(private fb: FormBuilder, private helper: HelperService, private auth: AuthService, private api: ApiService, private navigation: NavController) { }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -29,8 +30,10 @@ export class RegisterPage implements OnInit {
         .then( res =>{
           this.api.createUser(res.user.uid, {email: form.value.email, password: form.value.password})
             .then(created =>{
+              localStorage.setItem('uid',res.user.uid);
               this.helper.closeLoading();
               this.helper.presentToast('User created');
+              this.navigation.navigateRoot('login');
             }, err =>{
               this.helper.closeLoading();
               this.helper.presentToast(err.message);

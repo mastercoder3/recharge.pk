@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { NavController } from '@ionic/angular';
+import { AuthService } from 'src/app/services/auth.service';
+import { HelperService } from 'src/app/services/helper.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +13,7 @@ export class LoginPage implements OnInit {
 
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private navigation: NavController) { }
+  constructor(private fb: FormBuilder, private navigation: NavController, private auth: AuthService, private helper: HelperService) { }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -22,6 +24,19 @@ export class LoginPage implements OnInit {
 
   navigateRegister(){
     this.navigation.navigateForward('register');
+  }
+
+  submit(form){
+    this.helper.presentLoading();
+    this.auth.login(form.value.email, form.value.password)
+      .then( res =>{
+        this.helper.closeLoading();
+        this.helper.presentToast('User logged In.');
+        localStorage.setItem('uid',res.user.uid);
+      }, err =>{
+        this.helper.closeLoading();
+        this.helper.presentToast(err.message);
+      });
   }
 
 }
