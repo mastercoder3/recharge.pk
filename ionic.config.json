@@ -1,5 +1,7 @@
 {
   "name": "recharge.pk",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

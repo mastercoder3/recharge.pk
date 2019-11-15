@@ -1,6 +1,44 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
+
+
+@font-face {
+  font-family: 'Assistant-Light';
+  src: url('./../assets/fonts/Assistant-Light.ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Assistant-Regular';
+  src: url('./../assets/fonts/Assistant-Regular.ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Assistant-SemiBold';
+  src: url('./../assets/fonts/Assistant-SemiBold.ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Assistant-Bold';
+  src: url('./../assets/fonts/Assistant-Bold.ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Nunito-Regular';
+  src: url('./../assets/fonts/Nunito-Regular.ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
@@ -74,4 +112,11 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  --ion-font-family: 'Assistant-Bold';
+  --ion-font-family: 'Assistant-SemiBold';
+  --ion-font-family: 'Assistant-Regular';
+  --ion-font-family: 'Assistant-Light';
+  --ion-font-family: 'Nunito-Regular';
+  
 }
