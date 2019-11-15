@@ -31,8 +31,8 @@ export class LoginPage implements OnInit {
     this.auth.login(form.value.email, form.value.password)
       .then( res =>{
         this.helper.closeLoading();
-        this.helper.presentToast('User logged In.');
         localStorage.setItem('uid',res.user.uid);
+        this.navigation.navigateRoot('agent/home');
       }, err =>{
         this.helper.closeLoading();
         this.helper.presentToast(err.message);
@@ -54,6 +54,6 @@ export class LoginPage implements OnInit {
     };
 
     this.helper.presentAlertPrompt(func);
-  }N
+  }
 
 }
