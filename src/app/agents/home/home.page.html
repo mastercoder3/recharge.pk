@@ -1,96 +1,123 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      <ion-icon name="menu" style="position: relative; top: 4px;"></ion-icon><span
-        style="position: relative; left: 20px;">Mobile e-load</span>
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-split-pane contentId="menu-content">
+  <!--  our side menu  -->
+  <ion-menu contentId="menu-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title style="color: #5b0101;">Options</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ul style="list-style: none; padding: 0px 0px 0px 0px;">
+        <li 
+          style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;" (click)="navigateHome()" > Home
+        </li>
+        <li 
+          style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;" (click)="navigateTopUp()" > Top Up
+        </li>
+        <li 
+          style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;" (click)="logout()" > Log Out
+        </li>
+      </ul>
+    </ion-content>
+  </ion-menu>
 
-<ion-content>
 
-  <div class="container">
 
-    <div class="balHeader">
-      <h6>Balance Remaining: 00.00</h6>
-    </div>
+  <ion-content id="menu-content">
 
-    <h4 id="header">Choose a Carrier
-      <span>
-        <img src="assets/{{carrier}}.jpg" alt="">
-      </span>
-    </h4>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>
+          <ion-icon name="menu" style="position: relative; top: 4px;" (click)="openMenu()" ></ion-icon><span
+            style="position: relative; left: 20px;">Mobile e-load</span>
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
 
-    <div class="input">
-      <label for="state">Carrier</label>
-      <ion-select okText="Okay" cancelText="Cancel" [(ngModel)]="carrier">
-        <ion-select-option text-wrap value="jazz">Jazz</ion-select-option>
-        <ion-select-option text-wrap value="telenor">Telenor</ion-select-option>
-        <ion-select-option text-wrap value="ufone">Ufone</ion-select-option>
-        <ion-select-option text-wrap value="zong">Zong</ion-select-option>
-      </ion-select>
-    </div>
+    <div class="container">
 
-    <div class="limit">
-      <ion-row>
-        <ion-col size="4">
-          <div class="borderLimit">
-            <h6>50</h6>
-          </div>
-        </ion-col>
-        <ion-col size="4">
-          <div class="borderLimit">
-            <h6>50</h6>
-          </div>
-        </ion-col>
-        <ion-col size="4">
-          <div class="borderLimit">
-            <h6>50</h6>
-          </div>
-        </ion-col>
-        <ion-col size="4">
-          <div class="borderLimit">
-            <h6>50</h6>
-          </div>
-        </ion-col>
-        <ion-col size="4">
-          <div class="borderLimit">
-            <h6>50</h6>
-          </div>
-        </ion-col>
-        <ion-col size="4">
-          <div class="borderLimit">
-            <h6>50</h6>
-          </div>
-        </ion-col>
-        <ion-col size="4">
-          <div class="borderLimit">
-            <h6>50</h6>
-          </div>
-        </ion-col>
-
-      </ion-row>
-      <div class="divider"></div>
-      <div class="divider"></div>
-      <div class="divider"></div>
-      <div class="divider"></div>
-    </div>
-
-    <div class="footer">
-      <div class="input">
-        <label for="BillingAddress">Load Amount</label>
-        <ion-input id="BillingAddress" type="number" autocomplete="off"></ion-input>
+      <div class="balHeader">
+        <h6>Balance Remaining: 00.00</h6>
       </div>
-      <br>
+
+      <h4 id="header">Choose a Carrier
+        <span>
+          <img src="assets/{{carrier}}.jpg" alt="">
+        </span>
+      </h4>
+
       <div class="input">
-        <label for="BillingAddress">Subscriber Number</label>
-        <ion-input id="BillingAddress" type="number" autocomplete="off"></ion-input>
+        <label for="state">Carrier</label>
+        <ion-select okText="Okay" cancelText="Cancel" [(ngModel)]="carrier">
+          <ion-select-option text-wrap value="jazz">Jazz</ion-select-option>
+          <ion-select-option text-wrap value="telenor">Telenor</ion-select-option>
+          <ion-select-option text-wrap value="ufone">Ufone</ion-select-option>
+          <ion-select-option text-wrap value="zong">Zong</ion-select-option>
+        </ion-select>
       </div>
-      <br>
-      <ion-button (click)="submit(form)">Continue</ion-button>
-      <br>
+
+      <div class="limit">
+        <ion-row>
+          <ion-col size="4">
+            <div class="borderLimit">
+              <h6>50</h6>
+            </div>
+          </ion-col>
+          <ion-col size="4">
+            <div class="borderLimit">
+              <h6>50</h6>
+            </div>
+          </ion-col>
+          <ion-col size="4">
+            <div class="borderLimit">
+              <h6>50</h6>
+            </div>
+          </ion-col>
+          <ion-col size="4">
+            <div class="borderLimit">
+              <h6>50</h6>
+            </div>
+          </ion-col>
+          <ion-col size="4">
+            <div class="borderLimit">
+              <h6>50</h6>
+            </div>
+          </ion-col>
+          <ion-col size="4">
+            <div class="borderLimit">
+              <h6>50</h6>
+            </div>
+          </ion-col>
+          <ion-col size="4">
+            <div class="borderLimit">
+              <h6>50</h6>
+            </div>
+          </ion-col>
+
+        </ion-row>
+        <div class="divider"></div>
+        <div class="divider"></div>
+        <div class="divider"></div>
+        <div class="divider"></div>
+      </div>
+
+      <div class="footer">
+        <div class="input">
+          <label for="BillingAddress">Load Amount</label>
+          <ion-input id="BillingAddress" type="number" autocomplete="off"></ion-input>
+        </div>
+        <br>
+        <div class="input">
+          <label for="BillingAddress">Subscriber Number</label>
+          <ion-input id="BillingAddress" type="number" autocomplete="off"></ion-input>
+        </div>
+        <br>
+        <ion-button (click)="submit(form)">Continue</ion-button>
+        <br>
+      </div>
+
     </div>
 
-  </div>
+  </ion-content>
 
-</ion-content>
+</ion-split-pane>
