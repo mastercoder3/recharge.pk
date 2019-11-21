@@ -8,8 +8,6 @@ import { MenuController, NavController } from '@ionic/angular';
 })
 export class HomePage implements OnInit {
 
-  carrier='';
-
   constructor(private menu: MenuController, private navigation: NavController) { }
 
   ngOnInit() {
@@ -19,19 +17,18 @@ export class HomePage implements OnInit {
     this.menu.open();
   }
 
-  navigateTopUp(){
-    this.menu.close();
-    this.navigation.navigateForward('agent/top-up');
-  }
+  navigateUpdation(){
 
-  navigateHome(){
-    this.menu.close();
   }
 
   logout(){
     this.menu.close();
-    localStorage.clear();
-    this.navigation.navigateRoot('login');
+    localStorage.clear();    
+    this.navigation.navigateRoot('');
+  }
+
+  navigateHome(){
+    this.menu.close();
   }
 
 }

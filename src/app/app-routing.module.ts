@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'agent/top-up',
     loadChildren: () => import('./agents/top-up/top-up.module').then( m => m.TopUpPageModule)
   },
+  {
+    path: 'admin/home',
+    loadChildren: () => import('./admin/home/home.module').then( m => m.HomePageModule)
+  },
 ];
 
 @NgModule({

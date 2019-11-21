@@ -1,0 +1,63 @@
+<ion-split-pane contentId="menu-content">
+  <!--  our side menu  -->
+  <ion-menu contentId="menu-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title style="color: #5b0101;">Options</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ul style="list-style: none; padding: 0px 0px 0px 0px;">
+        <li style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;"
+          (click)="navigateHome()"> Home
+        </li>
+        <li style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;"
+          (click)="navigateUpdation()"> Update Credit
+        </li>
+        <li style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;"
+          (click)="logout()"> Log Out
+        </li>
+      </ul>
+    </ion-content>
+  </ion-menu>
+
+
+
+  <ion-content id="menu-content">
+
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>
+          <ion-icon name="menu" style="position: relative; top: 4px;" (click)="openMenu()"></ion-icon><span
+            style="position: relative; left: 20px;">Activities</span>
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+
+    <div class="container">
+
+      <h5>Recent Requests</h5>
+
+      <ion-list>
+          <ion-item>
+            <ion-label>03330001410 requested 100 AED Top Up</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>data</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>data</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>data</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>data</ion-label>
+          </ion-item>
+        </ion-list>
+
+    </div>
+
+  </ion-content>
+</ion-split-pane>
