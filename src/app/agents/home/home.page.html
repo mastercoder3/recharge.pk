@@ -8,14 +8,14 @@
     </ion-header>
     <ion-content>
       <ul style="list-style: none; padding: 0px 0px 0px 0px;">
-        <li 
-          style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;" (click)="navigateHome()" > Home
+        <li style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;"
+          (click)="navigateHome()"> Home
         </li>
-        <li 
-          style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;" (click)="navigateTopUp()" > Top Up
+        <li style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;"
+          (click)="navigateTopUp()"> Top Up
         </li>
-        <li 
-          style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;" (click)="logout()" > Log Out
+        <li style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;"
+          (click)="logout()"> Log Out
         </li>
       </ul>
     </ion-content>
@@ -28,19 +28,87 @@
     <ion-header>
       <ion-toolbar>
         <ion-title>
-          <ion-icon name="menu" style="position: relative; top: 4px;" (click)="openMenu()" ></ion-icon><span
-            style="position: relative; left: 20px;">Mobile e-load</span>
+          <ion-icon name="menu" style="position: relative; top: 4px;" (click)="openMenu()"></ion-icon><span
+            style="position: relative; left: 20px;">Home</span>
         </ion-title>
       </ion-toolbar>
     </ion-header>
 
     <div class="container">
 
-      <div class="balHeader">
+      <div class="topHeader">
+        <div class="content">
+          <h1>
+            <ion-icon name="wallet" mode="ios"></ion-icon>
+          </h1>
+          <h4>My Current Balance</h4>
+          <h4>AED 00.00</h4>
+        </div>
+      </div>
+
+      <div class="carriersGrid">
+
+        <ion-row>
+          <ion-col size="6" style="border-right: 1px #9D0001 solid;">
+            <div>
+              <img src="assets/jazz.jpg" alt="">
+            </div>
+          </ion-col>
+          <ion-col size="6">
+              <div>
+                  <img src="assets/telenor.jpg" alt="">
+              </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="6" style="border-top: 1px #9D0001 solid; border-right: 1px #9D0001 solid; border-bottom: 1px #9D0001 solid;">
+              <div>
+                  <img src="assets/ufone.jpg" alt="">
+              </div>
+          </ion-col>
+          <ion-col size="6" style="border-top: 1px #9D0001 solid; border-bottom: 1px #9D0001 solid;">
+              <div>
+                  <img src="assets/zong.jpg" alt="">
+              </div>
+          </ion-col>
+        </ion-row>
+
+      </div>
+
+
+
+
+      <!-- <div class="balHeader">
         <h6>Balance Remaining: 00.00</h6>
       </div>
 
-      <h4 id="header">Choose a Carrier
+      <ion-row class="carriers">
+        <ion-col size="6">
+          <div>
+            <img src="assets/jazz.jpg" alt="" style="max-width: 150px;">
+          </div>
+        </ion-col>
+        <ion-col size="6">
+          <div>
+            <img src="assets/telenor.jpg" alt="" style="max-width: 150px;">
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="carriers">
+        <ion-col size="6">
+          <div>
+            <img src="assets/ufone.jpg" alt="" style="max-width: 150px;">
+          </div>
+        </ion-col>
+        <ion-col size="6">
+          <div>
+            <img src="assets/zong.jpg" alt="" style="max-width: 150px;">
+          </div>
+        </ion-col>
+      </ion-row> -->
+
+      <!-- <h4 id="header">Choose a Carrier
         <span>
           <img src="assets/{{carrier}}.jpg" alt="">
         </span>
@@ -54,9 +122,9 @@
           <ion-select-option text-wrap value="ufone">Ufone</ion-select-option>
           <ion-select-option text-wrap value="zong">Zong</ion-select-option>
         </ion-select>
-      </div>
+      </div> -->
 
-      <div class="limit">
+      <!-- <div class="limit">
         <ion-row>
           <ion-col size="4">
             <div class="borderLimit">
@@ -114,7 +182,7 @@
         <br>
         <ion-button (click)="submit(form)">Continue</ion-button>
         <br>
-      </div>
+      </div> -->
 
     </div>
 

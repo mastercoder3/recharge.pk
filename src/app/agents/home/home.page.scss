@@ -3,9 +3,73 @@ ion-content{
     --height: 100%;
     --padding-top: 0px;
 
+    ion-toolbar{
+        --background: url('../../../assets/bg4.jpg') 0 0/100% 100% no-repeat fixed;
+        --background-size: cover;
+
+        ion-title{
+            color: white;
+        }
+    }
+
     .container{
         width: 100%;
-        height: 100%;
+        height: calc(100% - 56px);
+
+        .topHeader{
+            width: 100%;
+            height: 40% !important;
+            background: url('../../../assets/bg4.jpg') 0 0/100% 100% no-repeat fixed;
+            background-size: cover;
+
+            .content{
+                position: absolute;
+                top: 15%;
+                width: 100%;
+
+                h1{
+                    font-size: 6em;
+                    color: white;
+                    text-align: center;
+                    margin: 0px 0px 0px 0px;
+                    padding: 0px 0px 0px 0px;
+                    font-family: 'Assistant-Light';
+                }
+
+                h4{
+                    color: white;
+                    text-align: center;
+                    margin: 0px 0px 0px 0px;
+                    padding: 0px 0px 0px 0px;
+                    font-family: 'Assistant-Light';
+                }
+            }
+        }
+
+        .carriersGrid{
+            ion-row{
+                width: 100%;
+                height: 150px;
+
+                ion-col{
+                    width: 100%;
+                    height: 100%;
+
+                    div{
+                        width: 100%;
+                        height: 100%;
+                        img{
+                            max-width: 150px;
+                            height: auto;
+                            display: block;
+                            margin: 0 auto;
+                            position: relative;
+                            top: 15%;
+                        }
+                    }
+                }
+            }
+        }
 
         .balHeader{
             background: rgba(155,155,155,0.5);
@@ -26,6 +90,26 @@ ion-content{
                 img{
                     max-width: 60px;
                     height: auto;
+                }
+            }
+        }
+
+        .carriers{
+            width: 100%;
+            height: auto;
+
+            ion-col{
+                width: 100%;
+                height: 100%;
+            }
+            div{
+                // border: 1px rgba(0,0,0, 0.4) solid;
+                border: 1px white solid;
+                height: 100px;
+                img{
+                    margin: 0 auto;
+                    display: block;
+                    padding: 5px 5px 5px 5px;
                 }
             }
         }
@@ -87,7 +171,8 @@ ion-content{
             .borderLimit{
                 width: 100%;
                 height: 100%;
-                border: 1px rgba(0,0,0, 0.4) solid;
+                // border: 1px rgba(0,0,0, 0.4) solid;
+                border: 1px white solid;
             }
         }
 
