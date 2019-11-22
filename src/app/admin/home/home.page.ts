@@ -8,6 +8,8 @@ import { MenuController, NavController } from '@ionic/angular';
 })
 export class HomePage implements OnInit {
 
+  
+
   constructor(private menu: MenuController, private navigation: NavController) { }
 
   ngOnInit() {

@@ -64,11 +64,19 @@ ion-content{
                             display: block;
                             margin: 0 auto;
                             position: relative;
-                            top: 15%;
+                            top: 25%;
                         }
                     }
                 }
             }
+        }
+
+        .active{
+            background: lightgray;
+        }
+
+        .inactive{
+            background: white;
         }
 
         .balHeader{

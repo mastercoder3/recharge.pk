@@ -15,6 +15,10 @@ export class HomePage implements OnInit {
   ngOnInit() {
   }
 
+  changeCarrier(value){
+    this.carrier = value
+  }
+
   openMenu(){
     this.menu.open();
   }
