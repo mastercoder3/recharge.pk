@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'admin/home',
     loadChildren: () => import('./admin/home/home.module').then( m => m.HomePageModule)
   },
+  {
+    path: 'agents/recharge',
+    loadChildren: () => import('./agents/recharge/recharge.module').then( m => m.RechargePageModule)
+  },
 ];
 
 @NgModule({

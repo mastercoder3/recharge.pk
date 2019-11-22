@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController, NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,13 +11,16 @@ export class HomePage implements OnInit {
 
   carrier='';
 
-  constructor(private menu: MenuController, private navigation: NavController) { }
+  constructor(private menu: MenuController, private navigation: NavController, private router: Router) { }
 
   ngOnInit() {
   }
 
   changeCarrier(value){
     this.carrier = value
+    this.router.navigate(['agents/recharge',{
+      type: value
+    }]);
   }
 
   openMenu(){
