@@ -17,7 +17,7 @@ export class HomePage implements OnInit {
   }
 
   changeCarrier(value){
-    this.carrier = value
+    // this.carrier = value
     this.router.navigate(['agents/recharge',{
       type: value
     }]);
