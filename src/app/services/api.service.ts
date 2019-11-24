@@ -19,4 +19,8 @@ export class ApiService {
   getCarrierSettings(type){
     return this.afs.doc('settings/'+type).valueChanges();
   }
+
+  addNewRechargeRequest(data){
+    return this.afs.collection('requests').add(data);
+  }
 }
