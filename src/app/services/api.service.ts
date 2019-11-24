@@ -12,6 +12,10 @@ export class ApiService {
     return this.afs.doc('users/'+id).set(data);
   }
 
+  getUser(id){
+    return this.afs.doc('users/'+id).valueChanges();
+  }
+
   getCarrierSettings(type){
     return this.afs.doc('settings/'+type).valueChanges();
   }

@@ -21,11 +21,9 @@
     </ion-content>
   </ion-menu>
 
-
-
   <ion-content id="menu-content">
 
-    <ion-header>
+    <ion-header style="position: fixed; top: 0px !important;">
       <ion-toolbar>
         <ion-title>
           <ion-icon name="menu" style="position: relative; top: 4px;" (click)="openMenu()"></ion-icon><span
@@ -62,7 +60,7 @@
         <br>
         <div class="input">
           <label for="BillingAddress">Subscriber Number</label>
-          <ion-input id="BillingAddress" type="tek" autocomplete="off" [(ngModel)]="number"></ion-input>
+          <ion-input id="BillingAddress" type="tel" autocomplete="off" [(ngModel)]="number"></ion-input>
         </div>
         <br>
         <ion-button (click)="submit()">Continue</ion-button>

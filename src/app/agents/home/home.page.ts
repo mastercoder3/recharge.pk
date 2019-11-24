@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController, NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-home',
@@ -10,10 +11,19 @@ import { Router } from '@angular/router';
 export class HomePage implements OnInit {
 
   carrier='';
+  userData = {
+    balance: 0,
+    name: '',
+    phone: ''
+  };
 
-  constructor(private menu: MenuController, private navigation: NavController, private router: Router) { }
+  constructor(private menu: MenuController, private navigation: NavController, private router: Router, private api: ApiService) { }
 
   ngOnInit() {
+    this.api.getUser(localStorage.getItem('uid'))
+      .subscribe((res:any) =>{
+        this.userData = res;
+      });
   }
 
   changeCarrier(value){

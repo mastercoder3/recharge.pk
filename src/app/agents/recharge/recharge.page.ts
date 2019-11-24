@@ -52,6 +52,7 @@ export class RechargePage implements OnInit {
 
   navigateHome(){
     this.menu.close();
+    this.navigation.navigateRoot('agent/home');
   }
 
   logout(){

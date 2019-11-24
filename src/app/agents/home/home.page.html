@@ -42,147 +42,43 @@
             <ion-icon name="wallet" mode="ios"></ion-icon>
           </h1>
           <h4>My Current Balance</h4>
-          <h4>AED 00.00</h4>
+          <h4>AED {{userData.balance | number : '1.2-2'}}</h4>
         </div>
       </div>
 
       <div class="carriersGrid">
 
         <ion-row>
-          <ion-col size="6" style="border-right: 1px #9D0001 solid;" [class.active]="carrier === 'jazz' " [class.inactive]="carrier !== 'jazz' ">
+          <ion-col size="6" style="border-right: 1px #9D0001 solid;" [class.active]="carrier === 'jazz' "
+            [class.inactive]="carrier !== 'jazz' ">
             <div (click)="changeCarrier('jazz')">
               <img src="assets/jazz.png" alt="">
             </div>
           </ion-col>
           <ion-col size="6" [class.active]="carrier === 'telenor' " [class.inactive]="carrier !== 'telenor' ">
-              <div (click)="changeCarrier('telenor')">
-                  <img src="assets/telenor.png" alt="">
-              </div>
+            <div (click)="changeCarrier('telenor')">
+              <img src="assets/telenor.png" alt="">
+            </div>
           </ion-col>
         </ion-row>
 
         <ion-row>
-          <ion-col size="6" style="border-top: 1px #9D0001 solid; border-right: 1px #9D0001 solid; border-bottom: 1px #9D0001 solid;" [class.active]="carrier === 'ufone' " [class.inactive]="carrier !== 'ufone' ">
-              <div (click)="changeCarrier('ufone')">
-                  <img src="assets/ufone.png" alt="">
-              </div>
+          <ion-col size="6"
+            style="border-top: 1px #9D0001 solid; border-right: 1px #9D0001 solid; border-bottom: 1px #9D0001 solid;"
+            [class.active]="carrier === 'ufone' " [class.inactive]="carrier !== 'ufone' ">
+            <div (click)="changeCarrier('ufone')">
+              <img src="assets/ufone.png" alt="">
+            </div>
           </ion-col>
-          <ion-col size="6" style="border-top: 1px #9D0001 solid; border-bottom: 1px #9D0001 solid;" [class.active]="carrier === 'zong' " [class.inactive]="carrier !== 'zong' ">
-              <div (click)="changeCarrier('zong')">
-                  <img src="assets/zong.png" alt="">
-              </div>
+          <ion-col size="6" style="border-top: 1px #9D0001 solid; border-bottom: 1px #9D0001 solid;"
+            [class.active]="carrier === 'zong' " [class.inactive]="carrier !== 'zong' ">
+            <div (click)="changeCarrier('zong')">
+              <img src="assets/zong.png" alt="">
+            </div>
           </ion-col>
         </ion-row>
 
       </div>
-
-
-
-
-      <!-- <div class="balHeader">
-        <h6>Balance Remaining: 00.00</h6>
-      </div>
-
-      <ion-row class="carriers">
-        <ion-col size="6">
-          <div>
-            <img src="assets/jazz.jpg" alt="" style="max-width: 150px;">
-          </div>
-        </ion-col>
-        <ion-col size="6">
-          <div>
-            <img src="assets/telenor.jpg" alt="" style="max-width: 150px;">
-          </div>
-        </ion-col>
-      </ion-row>
-      <ion-row class="carriers">
-        <ion-col size="6">
-          <div>
-            <img src="assets/ufone.jpg" alt="" style="max-width: 150px;">
-          </div>
-        </ion-col>
-        <ion-col size="6">
-          <div>
-            <img src="assets/zong.jpg" alt="" style="max-width: 150px;">
-          </div>
-        </ion-col>
-      </ion-row> -->
-
-      <!-- <h4 id="header">Choose a Carrier
-        <span>
-          <img src="assets/{{carrier}}.jpg" alt="">
-        </span>
-      </h4>
-
-      <div class="input">
-        <label for="state">Carrier</label>
-        <ion-select okText="Okay" cancelText="Cancel" [(ngModel)]="carrier">
-          <ion-select-option text-wrap value="jazz">Jazz</ion-select-option>
-          <ion-select-option text-wrap value="telenor">Telenor</ion-select-option>
-          <ion-select-option text-wrap value="ufone">Ufone</ion-select-option>
-          <ion-select-option text-wrap value="zong">Zong</ion-select-option>
-        </ion-select>
-      </div> -->
-
-      <!-- <div class="limit">
-        <ion-row>
-          <ion-col size="4">
-            <div class="borderLimit">
-              <h6>50</h6>
-            </div>
-          </ion-col>
-          <ion-col size="4">
-            <div class="borderLimit">
-              <h6>50</h6>
-            </div>
-          </ion-col>
-          <ion-col size="4">
-            <div class="borderLimit">
-              <h6>50</h6>
-            </div>
-          </ion-col>
-          <ion-col size="4">
-            <div class="borderLimit">
-              <h6>50</h6>
-            </div>
-          </ion-col>
-          <ion-col size="4">
-            <div class="borderLimit">
-              <h6>50</h6>
-            </div>
-          </ion-col>
-          <ion-col size="4">
-            <div class="borderLimit">
-              <h6>50</h6>
-            </div>
-          </ion-col>
-          <ion-col size="4">
-            <div class="borderLimit">
-              <h6>50</h6>
-            </div>
-          </ion-col>
-
-        </ion-row>
-        <div class="divider"></div>
-        <div class="divider"></div>
-        <div class="divider"></div>
-        <div class="divider"></div>
-      </div>
-
-      <div class="footer">
-        <div class="input">
-          <label for="BillingAddress">Load Amount</label>
-          <ion-input id="BillingAddress" type="number" autocomplete="off"></ion-input>
-        </div>
-        <br>
-        <div class="input">
-          <label for="BillingAddress">Subscriber Number</label>
-          <ion-input id="BillingAddress" type="number" autocomplete="off"></ion-input>
-        </div>
-        <br>
-        <ion-button (click)="submit(form)">Continue</ion-button>
-        <br>
-      </div> -->
 
     </div>
 
