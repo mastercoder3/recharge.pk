@@ -33,3 +33,9 @@ $ionicons-font-path: "~ionicons/dist/fonts";
     height: 40px;
     margin: 24px 0;
 }
+
+.notificationModal .modal-wrapper{
+    --height: 95% !important;
+    --width: 90% !important;
+    --background: transparent;
+  }

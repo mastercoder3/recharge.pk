@@ -1,0 +1,61 @@
+.container{
+    width: 100%;
+    height: 100%;
+    background: url('../../../assets/bg4.jpg') 0 0/100% 100% no-repeat fixed;
+    background-size: cover;
+    border-radius: 10px;
+
+    .load{
+        width: 100%;
+        height: 100%;
+
+        .header{
+            position: absolute;
+            top: 20%;
+            color: white;
+            width: 100%;
+
+            h1{
+                color: white;
+                font-family: 'Assistant-Light';
+                text-align: center;
+            }
+            p{
+                color: white;
+                text-align: center;
+                font-family: 'Nunito-Regular';
+                line-height: 2px;
+            }
+            h6{
+                text-align: center;
+            }
+        }
+
+        .footer{
+            width: 100%;
+            height: 110px;
+            position: fixed;
+            bottom: 0px !important;
+
+            ion-row{
+                width: 100%;
+                height: 100%;
+            }
+            
+            ion-col{
+                width: 100% !important;
+                height: 100% !important;
+
+                div{
+                    width: 100% !important;
+                    height: 100% !important;
+                    background: lightgrey;
+                    h5{
+                        text-align: center;
+                        font-family: 'Assistant-Regular';
+                    }
+                }
+            }
+        }
+    }
+}

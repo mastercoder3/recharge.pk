@@ -1,0 +1,35 @@
+<div class="container">
+  <div *ngIf="type === 'load' " class="load">
+    <div class="header">
+      <h1>Mobile e-Load</h1>
+      <p>You are about to load {{data.type | titlecase}}</p>
+      <p>balance of AED {{data.amount | number : '1.2-2'}} to</p>
+      <p>{{data.number}}</p>
+      <h6><ion-icon name="star"></ion-icon> <ion-icon name="star"></ion-icon> <ion-icon name="star"></ion-icon></h6>
+    </div>
+    <div class="footer">
+      <ion-row>
+        <ion-col size="6" style="padding-left: 0px;">
+          <div style="border-top-right-radius: 10px">
+            <h5 style="position: relative; top: 10px;">
+                <ion-icon name="checkbox"></ion-icon>
+            </h5>
+            <h5>
+              Confirm
+            </h5>
+          </div>
+        </ion-col>
+        <ion-col size="6" style="padding-right: 0px;">
+            <div style="border-top-left-radius: 10px">
+                <h5 style="position: relative; top: 10px;">
+                    <ion-icon name="close-circle"></ion-icon>
+                </h5>
+                <h5>
+                  Cancel
+                </h5>
+              </div>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</div>
