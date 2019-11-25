@@ -105,4 +105,8 @@ export class HelperService {
     return await this.Mymodal.present();
   }
 
+  convertDate(x){
+    return `${x.getFullYear()}-${(x.getMonth() + 1) < 10 ? ('0' + (x.getMonth() + 1)) : (x.getMonth() + 1)}-${(x.getDate() < 10) ? ('0' + (x.getDate())) : x.getDate()}`;
+  }
+
 }
