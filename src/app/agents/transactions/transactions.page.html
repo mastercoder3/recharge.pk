@@ -27,7 +27,7 @@
 
   <ion-content id="menu-content">
 
-    <ion-header>
+    <ion-header style="position: fixed; top: 0px !important;">
       <ion-toolbar>
         <ion-title>
           <ion-icon name="menu" style="position: relative; top: 4px;" (click)="openMenu()"></ion-icon><span
@@ -37,6 +37,11 @@
     </ion-header>
 
     <div class="container">
+      <div class="topHeader">
+        <h6>
+          Balance : AED {{userData?.balance | number : '1.2-2'}}
+        </h6>
+      </div>
     </div>
   </ion-content>
 

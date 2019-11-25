@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController, NavController } from '@ionic/angular';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-transactions',
@@ -8,9 +9,15 @@ import { MenuController, NavController } from '@ionic/angular';
 })
 export class TransactionsPage implements OnInit {
 
-  constructor(private menu: MenuController, private navigation: NavController) { }
+  userData;
+
+  constructor(private menu: MenuController, private navigation: NavController, private api: ApiService) { }
 
   ngOnInit() {
+    this.api.getUser(localStorage.getItem('uid'))
+      .subscribe(res =>{
+        this.userData = res;
+      });
   }
 
   openMenu(){

@@ -25,7 +25,7 @@ export class RechargePage implements OnInit {
 
         this.api.getCarrierSettings(this.type)
           .subscribe( (data:any) =>{
-            console.log(data);
+            // console.log(data);
             if(data.charge){
               this.charges = data.charge;
             }
