@@ -45,8 +45,8 @@ export class NotificationComponent implements OnInit {
       this.api.addNewRechargeRequest(data)
         .then(res =>{
           this.closeModal();
-          this.closeModal();
-          this.navigation.navigateRoot('agents/home');
+          this.closeLoading();
+          this.navigation.navigateRoot('agent/home');
         }, err =>{
           this.presentToast(err.message);
         });

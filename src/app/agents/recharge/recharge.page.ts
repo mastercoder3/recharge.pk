@@ -35,8 +35,6 @@ export class RechargePage implements OnInit {
   }
 
   submit(){
-    this.helper.presentModal('load',{amount: this.amount, number: this.number, type: this.type});
-
     if(this.number.length < 10){
       this.helper.presentToast('Please provide a valid phone number.');
       return;
