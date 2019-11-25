@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController, NavController } from '@ionic/angular';
+import { ApiService } from 'src/app/services/api.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -8,15 +10,36 @@ import { MenuController, NavController } from '@ionic/angular';
 })
 export class HomePage implements OnInit {
 
-  
+  currentTab='top';  
+  topups=[];
+  rechrage=[];
 
-  constructor(private menu: MenuController, private navigation: NavController) { }
+  constructor(private menu: MenuController, private navigation: NavController, private api: ApiService) { }
 
   ngOnInit() {
+    this.api.getAllPendingTopUpRequests()
+    .pipe(map(actions => actions.map(a =>{
+      const data = a.payload.doc.data();
+      const did = a.payload.doc.id;
+      return {did, ...data};
+    })))
+    .subscribe( (res: Array<any> ) =>{
+      this.topups = res;
+    });
+
+  this.api.getAllPendingRechargeRequests()
+    .pipe(map(actions => actions.map(a =>{
+      const data = a.payload.doc.data();
+      const did = a.payload.doc.id;
+      return {did, ...data};
+    })))
+    .subscribe( (res: Array<any> ) =>{
+      this.rechrage = res;
+    });
   }
 
   openMenu(){
-    this.menu.open();
+    this.menu.open('menu-content00');
   }
 
   navigateUpdation(){
@@ -24,13 +47,17 @@ export class HomePage implements OnInit {
   }
 
   logout(){
-    this.menu.close();
+    this.menu.close('menu-content00');
     localStorage.clear();    
     this.navigation.navigateRoot('');
   }
 
   navigateHome(){
-    this.menu.close();
+    this.menu.close('menu-content00');
+  }
+
+  changeTab(val){
+    this.currentTab = val;
   }
 
 }
