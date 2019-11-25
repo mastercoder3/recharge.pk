@@ -49,6 +49,7 @@ export class NotificationComponent implements OnInit {
           .then(done =>{
             this.closeLoading();
             this.closeModal();
+            this.presentToast('Your e-Load is Successfully sent.');
           } , err =>{
             this.closeLoading();
             this.presentToast(err.message);

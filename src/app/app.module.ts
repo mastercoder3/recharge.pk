@@ -19,6 +19,9 @@ import { NotificationComponent } from './shared/notification/notification.compon
 import { Camera } from '@ionic-native/camera/ngx';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
+import { FirebaseX } from '@ionic-native/firebase-x/ngx';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+
 import { ImageViewerComponent } from './shared/image-viewer/image-viewer.component';
 
 @NgModule({
@@ -35,6 +38,8 @@ import { ImageViewerComponent } from './shared/image-viewer/image-viewer.compone
     SplashScreen,
     Camera,
     Clipboard,
+    FirebaseX,
+    LocalNotifications,
     AndroidPermissions,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

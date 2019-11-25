@@ -3,6 +3,9 @@ import { MenuController, NavController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api.service';
 import { map } from 'rxjs/operators';
 import { HelperService } from 'src/app/services/helper.service';
+import { FcmService } from 'src/app/services/fcm.service';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +18,19 @@ export class HomePage implements OnInit {
   topups=[];
   rechrage=[];
 
-  constructor(private menu: MenuController, private navigation: NavController, private api: ApiService, private helper: HelperService) { }
+  constructor(private menu: MenuController, private navigation: NavController, private api: ApiService, private helper: HelperService, private fcm: FcmService, private localNotifications: LocalNotifications) { 
+    this.fcm.getToken(localStorage.getItem('uid'));
+
+    this.fcm.listenToNotifications().pipe(
+      tap((msg) =>{
+          this.localNotifications.schedule({
+            title: msg.title,
+            text: msg.body
+          });
+        
+      })
+    ).subscribe();
+  }
 
   ngOnInit() {
     this.api.getAllPendingTopUpRequests()

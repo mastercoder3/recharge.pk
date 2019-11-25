@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { MenuController, NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import { FcmService } from 'src/app/services/fcm.service';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { map } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +21,19 @@ export class HomePage implements OnInit {
     phone: ''
   };
 
-  constructor(private menu: MenuController, private navigation: NavController, private router: Router, private api: ApiService) { }
+  constructor(private menu: MenuController, private navigation: NavController, private router: Router, private api: ApiService, private fcm: FcmService, private localNotifications: LocalNotifications) {
+    this.fcm.getToken(localStorage.getItem('uid'));
+
+    this.fcm.listenToNotifications().pipe(
+      tap((msg) =>{
+          this.localNotifications.schedule({
+            title: msg.title,
+            text: msg.body
+          });
+        
+      })
+    ).subscribe();
+   }
 
   ngOnInit() {
     this.api.getUser(localStorage.getItem('uid'))

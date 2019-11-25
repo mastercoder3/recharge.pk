@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "789833300439",
+    "firebase_url": "https://paypak-d5a09.firebaseio.com",
+    "project_id": "paypak-d5a09",
+    "storage_bucket": "paypak-d5a09.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:789833300439:android:6b07ab946b6f0e6d6f3392",
+        "android_client_info": {
+          "package_name": "com.paypak.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "789833300439-qg0l37hmvchv22o0iae0mr33l7bjs3tj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.paypak.app",
+            "certificate_hash": "4efa3aa53fc101651c5643a5ddc0d87f4c428671"
+          }
+        },
+        {
+          "client_id": "789833300439-cm62va73i1pijunnireb7o4i58rn4sni.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArC-qEqU9JG6mtvTWt46tEekx4ugTyT7c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "789833300439-cm62va73i1pijunnireb7o4i58rn4sni.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

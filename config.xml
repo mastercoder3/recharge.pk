@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.paypak.app" version="1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
-    <name>MyApp</name>
+<widget id="com.paypak.app" version="1" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>PayPak</name>
     <description>Mobile e-Load Application.</description>
     <author email="muhammadjunaidhassan1@gmail.com" href="https://github.com/mastercoder3">Muhammad Junaid Hassan</author>
     <content src="index.html" />
@@ -99,4 +99,5 @@
     <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^4.0.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
+    <plugin name="cordova-plugin-firebasex" spec="^6.1.0" />
 </widget>
