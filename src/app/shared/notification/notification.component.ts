@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalController, NavController, ToastController, LoadingController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api.service';
+import { Clipboard } from '@ionic-native/clipboard/ngx';
+import { ImageViewerComponent } from '../image-viewer/image-viewer.component';
 
 @Component({
   selector: 'app-notification',
@@ -14,13 +16,67 @@ export class NotificationComponent implements OnInit {
   userData;
   loading;
 
-  constructor(private modal: ModalController, private api: ApiService, private navigation: NavController, private toastController: ToastController, private loadingController: LoadingController) { }
+  constructor(private modal: ModalController, private api: ApiService, private navigation: NavController, private toastController: ToastController, private loadingController: LoadingController,
+    private clipboard: Clipboard, private newModal: ModalController) { }
 
   ngOnInit() {
-    this.api.getUser(localStorage.getItem('uid'))
+    if(this.type === 'load'){
+      this.api.getUser(localStorage.getItem('uid'))
+        .subscribe(res =>{
+          this.userData = res;
+      });
+    }
+    else if(this.type !== 'load'){
+      this.api.getUser(this.data.uid)
       .subscribe(res =>{
         this.userData = res;
-      })
+      });
+    }
+  }
+
+  copyToClipboard(number){
+    this.clipboard.copy(number.toString());
+  }
+
+  confirmRecharge(){
+    let commissionAmount = (2.5 * this.data.amount) / 100;
+    this.userData.balance += commissionAmount;
+    this.data.status = 'completed';
+    this.presentLoading();
+    this.api.updateRequestById(this.data.did, this.data)
+      .then(res =>{
+        this.api.updateUser(this.data.uid, this.userData)
+          .then(done =>{
+            this.closeLoading();
+            this.closeModal();
+          } , err =>{
+            this.closeLoading();
+            this.presentToast(err.message);
+          })
+      }, err =>{
+        this.closeLoading();
+        this.presentToast(err.message);
+      });
+  }
+
+  rejectRecharge(){
+    this.userData.balance += this.data.amount;
+    this.data.status = 'rejected';
+    this.presentLoading();
+    this.api.updateRequestById(this.data.did, this.data)
+      .then(res =>{
+        this.api.updateUser(this.data.uid, this.userData)
+          .then(done =>{
+            this.closeLoading();
+            this.closeModal();
+          } , err =>{
+            this.closeLoading();
+            this.presentToast(err.message);
+          })
+      }, err =>{
+        this.closeLoading();
+        this.presentToast(err.message);
+      });
   }
 
   closeModal(){
@@ -84,6 +140,44 @@ export class NotificationComponent implements OnInit {
 
   converTime(x){
     return `${x.getHours() < 10 ? ('0'+x.getHours() ) : x.getHours()}:${x.getMinutes() < 10 ? ('0' + x.getMinutes()) : x.getMinutes()}`;
+  }
+
+  openImage(){
+    this.presentModal(this.data.imageURL);
+  }
+
+  Mymodal;
+
+  async presentModal(images) {
+    this.Mymodal = await this.newModal.create({
+      component: ImageViewerComponent,
+      componentProps: {
+        images: [images]
+       },
+      cssClass: 'imageModal'
+    });
+  
+    return await this.Mymodal.present();
+  }
+
+  confirmTopUp(){
+    this.userData.balance += this.data.amount;
+    this.data.status = 'completed';
+    this.presentLoading();
+    this.api.updateTopupRequest(this.data.did, this.data)
+      .then(res =>{
+        this.api.updateUser(this.data.uid, this.userData)
+          .then(done =>{
+            this.closeLoading();
+            this.closeModal();
+          } , err =>{
+            this.closeLoading();
+            this.presentToast(err.message);
+          })
+      }, err =>{
+        this.closeLoading();
+        this.presentToast(err.message);
+      });
   }
 
 }

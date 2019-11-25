@@ -32,4 +32,75 @@
       </ion-row>
     </div>
   </div>
+  <div *ngIf="type === 'bal' " class="load">
+      <div class="header">
+          <h1>Mobile e-Load</h1>
+          <p>{{userData?.name}} requested load for {{data.type | titlecase}}</p>
+          <p>of AED {{data.amount | number : '1.2-2'}} to</p>
+          <p style="color: blue; text-decoration: underline;"  (click)="copyToClipboard(data?.number)">{{data.number}}</p>
+
+          <h6><ion-icon name="star"></ion-icon> <ion-icon name="star"></ion-icon> <ion-icon name="star"></ion-icon></h6>
+        </div>
+        <div class="footer">
+          <ion-row>
+            <ion-col size="6" style="padding-left: 0px;">
+              <div style="border-top-right-radius: 10px" (click)="confirmRecharge()" >
+                <h5 style="position: relative; top: 10px;">
+                    <ion-icon name="checkbox"></ion-icon>
+                </h5>
+                <h5>
+                  Confirm
+                </h5>
+              </div>
+            </ion-col>
+            <ion-col size="6" style="padding-right: 0px;">
+                <div style="border-top-left-radius: 10px" (click)="rejectRecharge()" >
+                    <h5 style="position: relative; top: 10px;">
+                        <ion-icon name="close-circle"></ion-icon>
+                    </h5>
+                    <h5>
+                      Reject
+                    </h5>
+                  </div>
+            </ion-col>
+          </ion-row>
+        </div>
+  </div>
+  <div *ngIf="type === 'top' " class="load">
+      <div class="header">
+          <h1>Top Up</h1>
+          <p>{{userData?.name}}</p>
+          <p>requested Top Up of {{data.amount | number : '1.2-2'}}</p>
+          <p>Phone#: {{data?.phone}}</p>
+          <p>User phone#: {{userData?.phone}}</p>
+          <img src="{{data?.imageURL}}" alt ="" style="    width: 200px;
+          margin: 0 auto;
+          display: block;
+          border-radius: 20px;" (click)="openImage()" >
+        </div>
+        <div class="footer">
+          <ion-row>
+            <ion-col size="6" style="padding-left: 0px;">
+              <div style="border-top-right-radius: 10px" (click)="confirmTopUp()" >
+                <h5 style="position: relative; top: 10px;">
+                    <ion-icon name="checkbox"></ion-icon>
+                </h5>
+                <h5>
+                  Confirm
+                </h5>
+              </div>
+            </ion-col>
+            <ion-col size="6" style="padding-right: 0px;">
+                <div style="border-top-left-radius: 10px" (click)="closeModal()" >
+                    <h5 style="position: relative; top: 10px;">
+                        <ion-icon name="close-circle"></ion-icon>
+                    </h5>
+                    <h5>
+                      close
+                    </h5>
+                  </div>
+            </ion-col>
+          </ion-row>
+        </div>
+  </div>
 </div>

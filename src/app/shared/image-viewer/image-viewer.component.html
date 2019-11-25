@@ -1,0 +1,9 @@
+<div class="conatiner" style="height: 100% !important; background: black !important;">
+    <ion-icon name="close" style="position: absolute; z-index: 100; top: 20px; left: 20px; color: white; font-size: 2em;" (click)="close()"></ion-icon>
+    <ion-slides pager="true" style="height: 100% !important; background: black !important;" [options]="slideOpts" >
+        <ion-slide *ngFor="let item of images" >
+            <img src="{{item}}" alt="">
+        </ion-slide>
+      </ion-slides>
+
+</div>

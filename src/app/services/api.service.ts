@@ -36,6 +36,10 @@ export class ApiService {
     return this.afs.collection('requests', ref => ref.where('status','==','pending')).snapshotChanges();    
   }
 
+  updateRequestById(id,data){
+    return this.afs.doc('requests/'+id).update(data);
+  }
+
   createTopUpRequest(data){
     return this.afs.collection('topup').add(data);
   }
@@ -46,5 +50,9 @@ export class ApiService {
 
   getAllPendingTopUpRequests(){
     return this.afs.collection('topup', ref => ref.where('status','==','pending')).snapshotChanges();
+  }
+
+  updateTopupRequest(id,data){
+    return this.afs.doc('topup/'+id).update(data);
   }
 }

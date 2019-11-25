@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuController, NavController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api.service';
 import { map } from 'rxjs/operators';
+import { HelperService } from 'src/app/services/helper.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ export class HomePage implements OnInit {
   topups=[];
   rechrage=[];
 
-  constructor(private menu: MenuController, private navigation: NavController, private api: ApiService) { }
+  constructor(private menu: MenuController, private navigation: NavController, private api: ApiService, private helper: HelperService) { }
 
   ngOnInit() {
     this.api.getAllPendingTopUpRequests()
@@ -36,6 +37,14 @@ export class HomePage implements OnInit {
     .subscribe( (res: Array<any> ) =>{
       this.rechrage = res;
     });
+  }
+
+  openTopUp(item){
+    this.helper.presentModal('top',item);
+  }
+
+  charge(item){
+    this.helper.presentModal('bal',item);    
   }
 
   openMenu(){

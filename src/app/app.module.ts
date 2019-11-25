@@ -18,10 +18,12 @@ import { NotificationComponent } from './shared/notification/notification.compon
 
 import { Camera } from '@ionic-native/camera/ngx';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+import { Clipboard } from '@ionic-native/clipboard/ngx';
+import { ImageViewerComponent } from './shared/image-viewer/image-viewer.component';
 
 @NgModule({
-  declarations: [AppComponent, NotificationComponent],
-  entryComponents: [NotificationComponent],
+  declarations: [AppComponent, NotificationComponent, ImageViewerComponent],
+  entryComponents: [NotificationComponent, ImageViewerComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase, 'paypak'), // imports firebase/app needed for everything
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
@@ -32,6 +34,7 @@ import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
     StatusBar,
     SplashScreen,
     Camera,
+    Clipboard,
     AndroidPermissions,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
