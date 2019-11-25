@@ -114,7 +114,8 @@ export class TopUpPage implements OnInit {
         amount: this.amount,
         imageId: '',
         imageURL: '',
-        date: this.date,
+        date: this.helper.convertDate(new Date(this.date)),
+        time: this.helper.converTime(new Date()),
         name: this.userData.name,
         status: 'pending'
       };

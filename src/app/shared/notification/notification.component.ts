@@ -37,7 +37,8 @@ export class NotificationComponent implements OnInit {
       let data = {
         ...this.data,
         uid: localStorage.getItem('uid'),
-        date: new Date(),
+        date: this.convertDate(new Date()),
+        time: this.converTime(new Date()),
         status: 'pending'
       };
 
@@ -75,6 +76,14 @@ export class NotificationComponent implements OnInit {
 
   closeLoading() {
     this.loading.dismiss();
+  }
+
+  convertDate(x){
+    return `${x.getFullYear()}-${(x.getMonth() + 1) < 10 ? ('0' + (x.getMonth() + 1)) : (x.getMonth() + 1)}-${(x.getDate() < 10) ? ('0' + (x.getDate())) : x.getDate()}`;
+  }
+
+  converTime(x){
+    return `${x.getHours() < 10 ? ('0'+x.getHours() ) : x.getHours()}:${x.getMinutes() < 10 ? ('0' + x.getMinutes()) : x.getMinutes()}`;
   }
 
 }
