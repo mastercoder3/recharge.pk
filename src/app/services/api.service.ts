@@ -20,6 +20,10 @@ export class ApiService {
     return this.afs.doc('users/'+id).update(data);
   }
 
+  getAllUsers(){
+    return this.afs.collection('users', ref => ref.where('type','==','agent')).snapshotChanges();
+  }
+
   getCarrierSettings(type){
     return this.afs.doc('settings/'+type).valueChanges();
   }

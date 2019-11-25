@@ -52,7 +52,8 @@ export class HomePage implements OnInit {
   }
 
   navigateUpdation(){
-
+    this.menu.close('menu-content00');
+    this.navigation.navigateForward('admin/users');
   }
 
   logout(){

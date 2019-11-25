@@ -105,6 +105,36 @@ export class HelperService {
     return await this.Mymodal.present();
   }
 
+  async presentAlert(header,message, value, btnText, func) {
+    const alert = await this.alertController.create({
+      header: header,
+      message: message,
+      inputs: [
+        {
+          name: 'balance',
+          type: 'number',
+          value: value,
+          placeholder: 'New Balance'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: btnText,
+          handler: func
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
   convertDate(x){
     return `${x.getFullYear()}-${(x.getMonth() + 1) < 10 ? ('0' + (x.getMonth() + 1)) : (x.getMonth() + 1)}-${(x.getDate() < 10) ? ('0' + (x.getDate())) : x.getDate()}`;
   }

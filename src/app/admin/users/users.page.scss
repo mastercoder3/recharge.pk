@@ -1,0 +1,26 @@
+ion-content{
+    --width: 100%;
+    --height: 100%;
+    --padding-top: 0px;
+
+    ion-toolbar{
+        --background: url('../../../assets/bg4.jpg') 0 0/100% 100% no-repeat fixed;
+        --background-size: cover;
+
+        ion-title{
+            color: white;
+        }
+    }
+
+    .container{
+        width: 100%;
+        height: calc(100% - 56px) !important;
+
+        h5{
+            margin: 0px 0px 0px 0px;
+            padding: 0px 0px 0px 0px;
+            text-align: center;
+            font-family: 'Assistant-Light';
+        }
+    }
+}

@@ -31,6 +31,10 @@ const routes: Routes = [
     path: 'agent/transactions',
     loadChildren: () => import('./agents/transactions/transactions.module').then( m => m.TransactionsPageModule)
   },
+  {
+    path: 'admin/users',
+    loadChildren: () => import('./admin/users/users.module').then( m => m.UsersPageModule)
+  },
 ];
 
 @NgModule({
