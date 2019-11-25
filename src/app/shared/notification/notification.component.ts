@@ -36,6 +36,7 @@ export class NotificationComponent implements OnInit {
 
   copyToClipboard(number){
     this.clipboard.copy(number.toString());
+    this.presentToast('Number copy to the clipboard.');
   }
 
   confirmRecharge(){
