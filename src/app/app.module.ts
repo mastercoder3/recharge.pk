@@ -16,6 +16,9 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NotificationComponent } from './shared/notification/notification.component';
 
+import { Camera } from '@ionic-native/camera/ngx';
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+
 @NgModule({
   declarations: [AppComponent, NotificationComponent],
   entryComponents: [NotificationComponent],
@@ -28,6 +31,8 @@ import { NotificationComponent } from './shared/notification/notification.compon
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
+    AndroidPermissions,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

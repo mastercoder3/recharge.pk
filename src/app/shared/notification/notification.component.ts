@@ -37,13 +37,16 @@ export class NotificationComponent implements OnInit {
       let data = {
         ...this.data,
         uid: localStorage.getItem('uid'),
-        date: new Date()
+        date: new Date(),
+        status: 'pending'
       };
 
       this.presentLoading();
 
       this.api.addNewRechargeRequest(data)
         .then(res =>{
+          this.userData.balance = this.userData.balance - this.data.amount;
+          this.api.updateUser(localStorage.getItem('uid'),this.userData);
           this.closeModal();
           this.closeLoading();
           this.navigation.navigateRoot('agent/home');

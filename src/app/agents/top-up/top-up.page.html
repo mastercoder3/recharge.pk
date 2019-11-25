@@ -15,6 +15,9 @@
           (click)="navigateTopUp()"> Top Up
         </li>
         <li style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;"
+          (click)="navigateTransaction()"> Transaction History
+        </li>
+        <li style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;"
           (click)="logout()"> Log Out
         </li>
       </ul>
@@ -36,29 +39,30 @@
     <div class="container">
       <br>
       <h5>Your Information</h5>
-      <form>
-        <div class="input">
-          <label for="BillingAddress">Transaction Id</label>
-          <ion-input id="BillingAddress" type="text" autocomplete="off"></ion-input>
-        </div>
-        <br>
+      <!-- <form> -->
         <div class="input">
           <label for="BillingAddress">Amount</label>
-          <ion-input id="BillingAddress" type="number" autocomplete="off"></ion-input>
+          <ion-input id="BillingAddress" type="number" autocomplete="off" placeholder="50" [(ngModel)]="amount"></ion-input>
         </div>
         <br>
         <div class="input">
           <label for="BillingAddress">Date</label>
-          <ion-input id="BillingAddress" type="text" autocomplete="off"></ion-input>
+          <ion-datetime cancelText="Cancel" doneText="Okay" display-format="DD-MM-YYYY" max="2021" placeholder="DD-MM-YYY" [(ngModel)]="date"></ion-datetime>
         </div>
         <br>
         <div class="input">
           <label for="BillingAddress">Contact Number</label>
-          <ion-input id="BillingAddress" type="text" autocomplete="off"></ion-input>
+          <ion-input id="BillingAddress" type="tel" autocomplete="off" placeholder="xxxxxxxxxx" [(ngModel)]="number"></ion-input>
         </div>
         <br>
-        <ion-button (click)="submit(form)">Submit</ion-button>
-      </form>
+        <div class="input">
+          <label for="BillingAddress">Receipt<small>&nbsp;(click below to choose)</small></label>
+          <br>
+          <img src="{{ base64Image || image}}" alt="" style="max-width: 200px; height: auto; border-radius: 0%;" (click)="choosePicture()">
+        </div>
+        <br>
+        <ion-button (click)="submit()">Submit</ion-button>
+      <!-- </form> -->
     </div>
 
   </ion-content>

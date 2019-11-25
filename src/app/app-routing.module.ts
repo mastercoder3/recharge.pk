@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'agents/recharge',
     loadChildren: () => import('./agents/recharge/recharge.module').then( m => m.RechargePageModule)
   },
+  {
+    path: 'agent/transactions',
+    loadChildren: () => import('./agents/transactions/transactions.module').then( m => m.TransactionsPageModule)
+  },
 ];
 
 @NgModule({

@@ -72,4 +72,9 @@ export class RechargePage implements OnInit {
     this.navigation.navigateRoot('login');
   }
 
+  navigateTransaction(){
+    this.menu.close();
+    this.navigation.navigateForward('agent/transactions');
+  }
+
 }

@@ -46,6 +46,11 @@ export class HomePage implements OnInit {
     this.menu.close();
   }
 
+  navigateTransaction(){
+    this.menu.close();
+    this.navigation.navigateForward('agent/transactions');
+  }
+
   logout(){
     this.menu.close();
     localStorage.clear();

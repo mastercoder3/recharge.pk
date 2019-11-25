@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ToastController, LoadingController, AlertController, ModalController } from '@ionic/angular';
+import { ToastController, LoadingController, AlertController, ModalController, ActionSheetController } from '@ionic/angular';
 import { NotificationComponent } from '../shared/notification/notification.component';
 
 @Injectable({
@@ -9,8 +9,37 @@ export class HelperService {
 
   loading;
 
-  constructor(private toastController: ToastController, private loadingController: LoadingController, private alertController: AlertController, private modal: ModalController) { }
+  constructor(private toastController: ToastController, private loadingController: LoadingController, private alertController: AlertController, private modal: ModalController, private actionSheetCtrl: ActionSheetController) { }
 
+  async presentActionSheet(title, n1, n2,myfunc,myfunc1){
+    const actionSheet = await this.actionSheetCtrl.create({
+      header: title,
+      buttons: [
+        {
+          text: n1,
+          role: 'destructive',
+          cssClass: 'actions-sheet',
+          handler: myfunc
+        },
+        {
+          text: n2,
+          role: 'destructive',
+          cssClass: 'actions-sheet',
+          handler: myfunc1
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'action-sheet-cancel',
+          handler: () => {
+
+          }
+        }
+      ]
+    });
+    await actionSheet.present();
+  }
+  
   async presentToast(msg) {
     const toast = await this.toastController.create({
       message: msg,
