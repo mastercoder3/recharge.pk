@@ -19,7 +19,9 @@ export class RegisterPage implements OnInit {
     this.form = this.fb.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
-      repeatPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
+      repeatPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+      name: ['', Validators.required],
+      phone: ['', Validators.compose([Validators.minLength(10), Validators.required])]
     });
   }
 
@@ -28,7 +30,7 @@ export class RegisterPage implements OnInit {
       this.helper.presentLoading();
       this.auth.signup(form.value.email, form.value.password)
         .then( res =>{
-          this.api.createUser(res.user.uid, {email: form.value.email, password: form.value.password})
+          this.api.createUser(res.user.uid, {email: form.value.email, password: form.value.password, type: 'agent', name: form.value.name, phone: form.value.phone, balance: 0})
             .then(created =>{
               localStorage.setItem('uid',res.user.uid);
               this.helper.closeLoading();

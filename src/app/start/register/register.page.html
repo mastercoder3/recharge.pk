@@ -7,6 +7,17 @@
     <div class="login">
       <form [formGroup]="form">
         <div class="input">
+          <label for="email">Name</label>
+          <ion-input id="email" type="text" autocomplete="off" formControlName="name"></ion-input>
+        </div>
+        <br>
+        <div class="input">
+          <label for="email">Mobile Number <small>(U.A.E number)</small></label>
+          <ion-input id="email" type="text" autocomplete="off" formControlName="phone"
+            placeholder="example: 0512711909"></ion-input>
+        </div>
+        <br>
+        <div class="input">
           <label for="email">E-mail Address</label>
           <ion-input id="email" type="email" autocomplete="off" formControlName="email"></ion-input>
         </div>
