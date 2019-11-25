@@ -34,25 +34,25 @@ export class HomePage implements OnInit {
   }
 
   openMenu(){
-    this.menu.open();
+    this.menu.open('menu-content11');
   }
 
   navigateTopUp(){
-    this.menu.close();
+    this.menu.close('menu-content11');
     this.navigation.navigateForward('agent/top-up');
   }
 
   navigateHome(){
-    this.menu.close();
+    this.menu.close('menu-content11');
   }
 
   navigateTransaction(){
-    this.menu.close();
+    this.menu.close('menu-content11');
     this.navigation.navigateForward('agent/transactions');
   }
 
   logout(){
-    this.menu.close();
+    this.menu.close('menu-content11');
     localStorage.clear();
     this.navigation.navigateRoot('login');
   }

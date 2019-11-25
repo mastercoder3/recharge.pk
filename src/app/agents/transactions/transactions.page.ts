@@ -66,12 +66,17 @@ export class TransactionsPage implements OnInit {
 
   navigateTopUp(){
     this.menu.close();
-    this.navigation.navigateForward('agent/top-up')
+    this.navigation.pop().then(res =>{
+      this.navigation.navigateForward('agent/top-up')
+    });
   }
 
   navigateHome(){
     this.menu.close();
-    this.navigation.navigateForward('agent/home');
+    this.navigation.pop()
+      .then(res =>{
+        this.navigation.navigateRoot('agent/home');
+      });
   }
 
   navigateTransaction(){

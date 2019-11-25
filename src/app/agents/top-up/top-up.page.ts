@@ -51,10 +51,14 @@ export class TopUpPage implements OnInit {
 
   navigateHome(){
     this.menu.close();
-    this.navigation.navigateForward('agent/home');
+    this.navigation.pop()
+      .then(res =>{
+        this.navigation.navigateForward('agent/home');
+      });
   }
 
   logout(){
+    this.menu.close();
     localStorage.clear();
     this.navigation.navigateRoot('login');
   }
@@ -149,7 +153,10 @@ export class TopUpPage implements OnInit {
 
   navigateTransaction(){
     this.menu.close();
-    this.navigation.navigateForward('agent/transactions');
+    this.navigation.pop()
+      .then(res =>{
+        this.navigation.navigateForward('agent/transactions');
+      })
   }
 
 }
