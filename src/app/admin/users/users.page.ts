@@ -39,7 +39,7 @@ export class UsersPage implements OnInit {
   logout(){
     this.menu.close('menu-content01');
     localStorage.clear();    
-    this.navigation.navigateRoot('');
+    this.navigation.navigateRoot('login');
   }
 
   navigateHome(){

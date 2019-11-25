@@ -59,7 +59,7 @@ export class HomePage implements OnInit {
   logout(){
     this.menu.close('menu-content00');
     localStorage.clear();    
-    this.navigation.navigateRoot('');
+    this.navigation.navigateRoot('login');
   }
 
   navigateHome(){
