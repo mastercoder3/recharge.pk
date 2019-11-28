@@ -23,10 +23,11 @@ import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 import { ImageViewerComponent } from './shared/image-viewer/image-viewer.component';
+import { AgentsComponent } from './agents/agents/agents.component';
 
 @NgModule({
-  declarations: [AppComponent, NotificationComponent, ImageViewerComponent],
-  entryComponents: [NotificationComponent, ImageViewerComponent],
+  declarations: [AppComponent, NotificationComponent, ImageViewerComponent, AgentsComponent],
+  entryComponents: [NotificationComponent, ImageViewerComponent, AgentsComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase, 'paypak'), // imports firebase/app needed for everything
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AgentsComponent } from './agents/agents/agents.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -12,9 +13,19 @@ const routes: Routes = [
     loadChildren: () => import('./start/register/register.module').then( m => m.RegisterPageModule)
   },
   {
-    path: 'agent/home',
-    loadChildren: () => import('./agents/home/home.module').then( m => m.HomePageModule)
+    path: 'agent',
+    component: AgentsComponent,
+    children: [
+      {
+        path: 'home',
+        loadChildren: () => import('./agents/home/home.module').then( m => m.HomePageModule)
+      }
+    ]
   },
+  // {
+  //   path: 'agent/home',
+  //   loadChildren: () => import('./agents/home/home.module').then( m => m.HomePageModule)
+  // },
   {
     path: 'agent/top-up',
     loadChildren: () => import('./agents/top-up/top-up.module').then( m => m.TopUpPageModule)

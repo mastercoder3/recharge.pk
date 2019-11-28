@@ -1,6 +1,6 @@
-<ion-split-pane contentId="menu-content11">
+<!-- <ion-split-pane contentId="menu-content11"> -->
   <!--  our side menu  -->
-  <ion-menu contentId="menu-content11"  menuId="menu-content11">
+  <!-- <ion-menu contentId="menu-content11"  menuId="menu-content11">
     <ion-header>
       <ion-toolbar>
         <ion-title style="color: #5b0101;">Options</ion-title>
@@ -22,22 +22,33 @@
         </li>
       </ul>
     </ion-content>
-  </ion-menu>
+  </ion-menu> -->
 
-
-
-  <ion-content id="menu-content11">
-
-    <ion-header>
+      <!-- <ion-header>
       <ion-toolbar>
         <ion-title>
           <ion-icon name="menu" style="position: relative; top: 4px;" (click)="openMenu()"></ion-icon><span
             style="position: relative; left: 20px;">Home</span>
         </ion-title>
       </ion-toolbar>
-    </ion-header>
+    </ion-header> -->
 
-    <div class="container">
+    <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+          <ion-title>
+            Home
+          </ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+  <ion-content >
+
+
+
+    <div class="container" id="menu-content">
 
       <div class="topHeader">
         <div class="content">
@@ -87,4 +98,4 @@
 
   </ion-content>
 
-</ion-split-pane>
+<!-- </ion-split-pane> -->
