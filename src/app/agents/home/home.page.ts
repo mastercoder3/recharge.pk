@@ -60,5 +60,6 @@ export class HomePage implements OnInit {
       type: value
     }]);
   }
+  
 
 }

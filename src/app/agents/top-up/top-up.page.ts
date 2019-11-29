@@ -103,6 +103,10 @@ export class TopUpPage implements OnInit {
   }
 
   submit(){
+    if(this.amount < 20){
+      this.helper.presentToast('Minimum Top-Up of AED 20');
+      return;
+    }
     if(this.base64Image === '' || this.number === '' || this.amount <= 0 || !this.date){
       this.helper.presentToast('Please fill all fields');
       return;

@@ -202,3 +202,22 @@ ion-content{
         }
     }
 }
+
+ion-footer{
+    --background: #0B471F !important;
+    background: #0B471F !important;
+    height: auto;
+    h6{
+        margin-bottom: 0px;
+        margin-top: 0px;
+        padding-bottom: 10px;
+        background-color: rgba(0, 0, 0, 0.8);
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        color: white;
+        font-family: 'Nunito-Regular' !important;
+        text-align: center;
+        padding-top: 7px;
+        font-size: 0.9em;
+    }
+}
