@@ -16,6 +16,7 @@ export class RechargePage implements OnInit {
   amount=0;
   number='';
   userData; 
+  text='';
 
   constructor(private menu: MenuController, private navigation: NavController, private route: ActivatedRoute, private api: ApiService, private helper: HelperService) { }
 
@@ -51,12 +52,13 @@ export class RechargePage implements OnInit {
       return;
     }
     else{
-      this.helper.presentModal('load',{amount: this.amount, number: `03${this.number}`, type: this.type});
+      this.helper.presentModal('load',{amount: this.amount, number: `03${this.number}`, type: this.type, text: this.text});
     }
   }
 
-  chargeAmount(amount){
-    this.amount = amount;
+  chargeAmount(item){
+    this.amount = item.amount;
+    this.text = item.text;
   }
 
   openMenu(){

@@ -3,7 +3,7 @@
     <div class="header">
       <h1>Mobile e-Load</h1>
       <p>You are about to load {{data.type | titlecase}}</p>
-      <p>balance of AED {{data.amount | number : '1.2-2'}} to</p>
+      <p>balance of AED {{data.amount | number : '1.2-2'}} ({{data?.text}}) to</p>
       <p>{{data.number}}</p>
       <h6><ion-icon name="star"></ion-icon> <ion-icon name="star"></ion-icon> <ion-icon name="star"></ion-icon></h6>
     </div>
@@ -37,7 +37,7 @@
           <h1>Mobile e-Load</h1>
           <p>{{userData?.name}} requested load for {{data.type | titlecase}}</p>
           <p>of AED {{data.amount | number : '1.2-2'}} to</p>
-          <p style="color: blue; text-decoration: underline;"  (click)="copyToClipboard(data?.number)">{{data.number}}</p>
+          <p style=" text-decoration: underline; font-size: 1.3em; text-decoration: underline;"  (click)="copyToClipboard(data?.number)">{{data.number}}</p>
 
           <h6><ion-icon name="star"></ion-icon> <ion-icon name="star"></ion-icon> <ion-icon name="star"></ion-icon></h6>
         </div>

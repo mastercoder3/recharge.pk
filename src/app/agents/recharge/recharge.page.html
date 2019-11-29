@@ -30,7 +30,8 @@
         <ion-col size="4" *ngFor="let item of charges">
           <div class="borderLimit" (click)="chargeAmount(item)" [class.active]="amount === item"
             [class.inactive]="amount !== item">
-            <h6>{{item}}</h6>
+            <h6>{{item?.amount}}</h6>
+            <p style="margin: 0px 0px 0px 0px; font-size: 0.7em; text-align: center; position: relative; top: 7px;">{{item?.text}}</p>
           </div>
         </ion-col>
 
