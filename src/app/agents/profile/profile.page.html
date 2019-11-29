@@ -31,7 +31,12 @@
       <h5>Change Password</h5>
       <div class="input">
         <label for="BillingAddress">New Password</label>
-        <ion-input id="BillingAddress" type="password" autocomplete="off" placeholder="50" [(ngModel)]="password"></ion-input>
+        <ion-input id="BillingAddress" type="password" autocomplete="off" placeholder="New Password" [(ngModel)]="password"></ion-input>
+      </div>
+      <br>
+      <div class="input">
+        <label for="BillingAddress">Confirm Password</label>
+        <ion-input id="BillingAddress" type="password" autocomplete="off" placeholder="New Password" [(ngModel)]="confirmPassword"></ion-input>
       </div>
       <br>
       <ion-button (click)="changePassword()">Change</ion-button>

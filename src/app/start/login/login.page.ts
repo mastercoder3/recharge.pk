@@ -43,6 +43,7 @@ export class LoginPage implements OnInit {
     this.helper.presentLoading();
     this.auth.login(form.value.email, form.value.password)
       .then( res =>{
+        this.auth.enablePersistence();
         this.api.getUser(res.user.uid)
           .subscribe ((data:any) =>{
             this.userData = data;
