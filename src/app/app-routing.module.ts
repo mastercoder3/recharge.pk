@@ -54,6 +54,10 @@ const routes: Routes = [
       {
         path: 'transactions',
         loadChildren: () => import('./admin/transactions/transactions.module').then( m => m.TransactionsPageModule)
+      },
+      {
+        path: 'profile',
+        loadChildren: () => import('./admin/profile/profile.module').then( m => m.ProfilePageModule)
       }
     ]
   }

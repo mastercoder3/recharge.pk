@@ -121,7 +121,8 @@ export class TopUpPage implements OnInit {
         date: this.helper.convertDate(new Date(this.date)),
         time: this.helper.converTime(new Date()),
         name: this.userData.name,
-        status: 'pending'
+        status: 'pending',
+        type: 'Cash-In'
       };
       this.upload();
     }

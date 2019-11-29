@@ -46,6 +46,16 @@ export class NotificationComponent implements OnInit {
     this.presentLoading();
     this.api.updateRequestById(this.data.did, this.data)
       .then(res =>{
+        this.api.createTopUpRequest({
+          amount: commissionAmount,
+          uid: this.data.uid,
+          status: 'added',
+          date: this.convertDate(new Date),
+          time: this.converTime(new Date()),
+          name: this.data.name,
+          phone: this.data.phone,
+          type: 'Commission',
+        });
         this.api.updateUser(this.data.uid, this.userData)
           .then(done =>{
             this.closeLoading();
