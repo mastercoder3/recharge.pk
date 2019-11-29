@@ -46,13 +46,14 @@
       <div class="content" [ngSwitch]="currentTab">
         <div *ngSwitchCase="'top'" style="width: 100%; height: 100%;">
             <ion-list>
-                <ion-item *ngFor="let item of searchTopups">
+                <ion-item *ngFor="let item of searchTopups" [class.pending]="item.status === 'pending' " >
                   <ion-label>
                     <small>{{item?.date}} - {{item?.time}}</small>
                     <h5>
                       <span style="float: left;">Status: {{item?.status}}</span>
                       <span style="float: right;">Amount: AED {{item?.amount | number : '1.2-2'}}</span>
                     </h5>
+                    <br>
                     <h5>
                       Type: {{item?.type ? item?.type : 'Cash-In'}}
                     </h5>
@@ -62,7 +63,7 @@
         </div>
         <div *ngSwitchCase="'load'" style="width: 100%; height: 100%;">
             <ion-list>
-                <ion-item *ngFor="let item of searchRecharge">
+                <ion-item *ngFor="let item of searchRecharge" [class.pending]="item.status === 'pending' " >
                   <ion-label>
                     <small>{{item?.date}} - {{item?.time}}</small>
                     <h5>

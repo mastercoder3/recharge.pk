@@ -35,16 +35,17 @@ export class RechargePage implements OnInit {
   }
 
   submit(){
-    if(this.number.length < 10){
+    console.log(this.number);
+    if(this.number.length < 9){
       this.helper.presentToast('Please provide a valid phone number.');
       return;
     }
-    else if(this.amount < 0){
-      this.helper.presentToast('Please provide with an amount.');
+    else if(this.amount < 5){
+      this.helper.presentToast('Minimum Amount is 5 AED');
       return;
     }
     else{
-      this.helper.presentModal('load',{amount: this.amount, number: this.number, type: this.type});
+      this.helper.presentModal('load',{amount: this.amount, number: `03${this.number}`, type: this.type});
     }
   }
 

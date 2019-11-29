@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
-import { NavController } from '@ionic/angular';
+import { NavController, Platform } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { HelperService } from 'src/app/services/helper.service';
 import { ApiService } from 'src/app/services/api.service';
@@ -15,13 +15,24 @@ export class LoginPage implements OnInit {
   form: FormGroup;
   userData;
 
-  constructor(private fb: FormBuilder, private navigation: NavController, private auth: AuthService, private helper: HelperService, private api: ApiService) { }
+  constructor(private fb: FormBuilder, private navigation: NavController, private auth: AuthService, private helper: HelperService, private api: ApiService, private platform: Platform) { }
 
   ngOnInit() {
     this.form = this.fb.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.required]
     });
+    
+    this.platform.backButton.subscribe( () =>{
+      if(this.helper.active === false){
+       let func = () =>{
+         this.helper.active = false;
+         navigator['app'].exitApp();
+       };
+ 
+       this.helper.presentAlertMessage('Exit PayPak','Do you want to exit?','No','Yes', func);
+      }
+     });
   }
 
   navigateRegister(){

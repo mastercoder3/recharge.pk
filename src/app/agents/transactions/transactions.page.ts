@@ -25,7 +25,7 @@ export class TransactionsPage implements OnInit {
   ngOnInit() {
 
     let x = new Date();
-    this.start = this.helper.convertDate(new Date(x.setDate(x.getDate() - 3)));
+    this.start = this.helper.convertDate(new Date(x.setDate(x.getDate() - 30)));
     this.end = this.helper.convertDate(new Date());
 
     this.api.getUser(localStorage.getItem('uid'))
@@ -42,6 +42,14 @@ export class TransactionsPage implements OnInit {
       .subscribe( (res: Array<any> ) =>{
         this.topups = res;
         this.searchTopups = this.topups.filter(data => data.date >= this.helper.convertDate(new Date(this.start)) && data.date <= this.helper.convertDate(new Date(this.end)));
+        this.searchTopups.map(a => {return {temp: a.date+'-'+a.time, ...a}}).sort((a,b):any => {
+          if(a.temp < b.temp){
+            return -1;
+          }
+          else{
+            return 1;
+        }
+        });
       });
 
     this.api.getAllRechargeRequestsById(localStorage.getItem('uid'))
@@ -51,8 +59,16 @@ export class TransactionsPage implements OnInit {
         return {did, ...data};
       })))
       .subscribe( (res: Array<any> ) =>{
-        this.rechrage = res;
-        this.searchRecharge = this.rechrage.filter(data => data.date >= this.helper.convertDate(new Date(this.start)) && data.date <= this.helper.convertDate(new Date(this.end)))
+        this.rechrage = res.filter(data => data.status !== 'rejected');
+        this.searchRecharge = this.rechrage.filter(data => data.date >= this.helper.convertDate(new Date(this.start)) && data.date <= this.helper.convertDate(new Date(this.end)));
+        this.searchRecharge = this.searchRecharge.map(a => {return {temp: a.date+'-'+a.time, ...a}}).sort((a,b):any => {
+          if(a.temp < b.temp){
+            return -1;
+          }
+          else{
+            return 1;
+        }
+        });
       });
   }
 
@@ -63,7 +79,23 @@ export class TransactionsPage implements OnInit {
     }
     else{
       this.searchTopups = this.topups.filter(data => data.date >= this.helper.convertDate(new Date(this.start)) && data.date <= this.helper.convertDate(new Date(this.end)));
-      this.searchRecharge = this.rechrage.filter(data => data.date >= this.helper.convertDate(new Date(this.start)) && data.date <= this.helper.convertDate(new Date(this.end)))
+      this.searchTopups.sort((a,b):any => {
+        if(a.temp < b.temp){
+          return -1;
+        }
+        else{
+          return 1;
+      }
+      });
+      this.searchRecharge = this.rechrage.filter(data => data.date >= this.helper.convertDate(new Date(this.start)) && data.date <= this.helper.convertDate(new Date(this.end)));
+      this.searchRecharge = this.searchRecharge.map(a => {return {temp: a.date+'-'+a.time, ...a}}).sort((a,b):any => {
+          if(a.temp < b.temp){
+            return -1;
+          }
+          else if(a.temp > b.temp){
+            return 1;
+          }
+        });
     }
   }
 

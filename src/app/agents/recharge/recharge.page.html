@@ -14,6 +14,9 @@
   <div class="container">
     <h4>
       Provide Information
+      <span>
+        <img src="assets/{{type}}.png" alt="" style="width: 60px; height: auto; float: right; position: relative; right: 15px;">
+      </span>
     </h4>
     <div class="limit">
       <ion-row>
@@ -39,7 +42,7 @@
       <br>
       <div class="input">
         <label for="BillingAddress">Subscriber Number</label>
-        <ion-input id="BillingAddress" type="tel" autocomplete="off" [(ngModel)]="number" placeholder="03xx-xxxxxxx">
+        <ion-input id="BillingAddress" type="tel" autocomplete="off" [(ngModel)]="number" placeholder="xx-xxxxxxx" maxlength="9" >
         </ion-input>
       </div>
       <br>

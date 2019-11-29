@@ -74,5 +74,9 @@ ion-content{
             color: #5b0101;  
             background: white !important;
         }
+
+        .pending{
+            --background: rgb(183, 233, 183);
+        }
     }
 }
