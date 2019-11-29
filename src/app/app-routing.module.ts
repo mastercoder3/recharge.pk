@@ -19,6 +19,18 @@ const routes: Routes = [
       {
         path: 'home',
         loadChildren: () => import('./agents/home/home.module').then( m => m.HomePageModule)
+      },
+      {
+        path: 'recharge',
+        loadChildren: () => import('./agents/recharge/recharge.module').then( m => m.RechargePageModule)
+      },
+      {
+        path: 'transactions',
+        loadChildren: () => import('./agents/transactions/transactions.module').then( m => m.TransactionsPageModule)
+      },
+      {
+        path: 'top-up',
+        loadChildren: () => import('./agents/top-up/top-up.module').then( m => m.TopUpPageModule)
       }
     ]
   },
@@ -27,20 +39,8 @@ const routes: Routes = [
   //   loadChildren: () => import('./agents/home/home.module').then( m => m.HomePageModule)
   // },
   {
-    path: 'agent/top-up',
-    loadChildren: () => import('./agents/top-up/top-up.module').then( m => m.TopUpPageModule)
-  },
-  {
     path: 'admin/home',
     loadChildren: () => import('./admin/home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: 'agents/recharge',
-    loadChildren: () => import('./agents/recharge/recharge.module').then( m => m.RechargePageModule)
-  },
-  {
-    path: 'agent/transactions',
-    loadChildren: () => import('./agents/transactions/transactions.module').then( m => m.TransactionsPageModule)
   },
   {
     path: 'admin/users',

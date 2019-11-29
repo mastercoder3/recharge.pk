@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController, NavController } from '@ionic/angular';
+import {  NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { FcmService } from 'src/app/services/fcm.service';
@@ -21,7 +21,7 @@ export class HomePage implements OnInit {
     phone: ''
   };
 
-  constructor(private menu: MenuController, private navigation: NavController, private router: Router, private api: ApiService, private fcm: FcmService, private localNotifications: LocalNotifications) {
+  constructor( private navigation: NavController, private router: Router, private api: ApiService, private fcm: FcmService, private localNotifications: LocalNotifications) {
     this.fcm.getToken(localStorage.getItem('uid'));
 
     this.fcm.listenToNotifications().pipe(
@@ -44,33 +44,9 @@ export class HomePage implements OnInit {
 
   changeCarrier(value){
     // this.carrier = value
-    this.router.navigate(['agents/recharge',{
+    this.router.navigate(['agent/recharge',{
       type: value
     }]);
-  }
-
-  openMenu(){
-    this.menu.open('menu-content11');
-  }
-
-  navigateTopUp(){
-    this.menu.close('menu-content11');
-    this.navigation.navigateForward('agent/top-up');
-  }
-
-  navigateHome(){
-    this.menu.close('menu-content11');
-  }
-
-  navigateTransaction(){
-    this.menu.close('menu-content11');
-    this.navigation.navigateForward('agent/transactions');
-  }
-
-  logout(){
-    this.menu.close('menu-content11');
-    localStorage.clear();
-    this.navigation.navigateRoot('login');
   }
 
 }

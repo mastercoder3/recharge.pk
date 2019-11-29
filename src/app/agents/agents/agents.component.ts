@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-agents',
@@ -7,21 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgentsComponent implements OnInit {
 
-  public appPages = [
-    {
-      title: 'Home',
-      url: '/home',
-      icon: 'home'
-    },
-    {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
-    }
-  ];
-
-  constructor() { }
+  constructor(private menu: MenuController, private navigation: NavController) { }
 
   ngOnInit() {}
+
+  navigateTopUp(){
+    this.menu.close();
+    this.navigation.navigateForward('agent/top-up');
+  }
+
+  navigateHome(){
+    this.menu.close();
+    this.navigation.navigateForward('agent/home');
+  }
+
+  navigateTransaction(){
+    this.menu.close();
+    this.navigation.navigateForward('agent/transactions');
+  }
+
+  logout(){
+    this.menu.close();
+    localStorage.clear();
+    this.navigation.navigateRoot('login');
+  }
 
 }

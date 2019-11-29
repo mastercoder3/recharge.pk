@@ -1,75 +1,51 @@
-<ion-split-pane contentId="menu-content1">
-  <!--  our side menu  -->
-  <ion-menu contentId="menu-content1">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title style="color: #5b0101;">Options</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <ul style="list-style: none; padding: 0px 0px 0px 0px;">
-        <li style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;"
-          (click)="navigateHome()"> Home
-        </li>
-        <li style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;"
-          (click)="navigateTopUp()"> Top Up
-        </li>
-        <li style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;"
-          (click)="navigateTransaction()"> Transaction History
-        </li>
-        <li style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;"
-          (click)="logout()"> Log Out
-        </li>
-      </ul>
-    </ion-content>
-  </ion-menu>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button style="color: white;"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Mobile e-Load
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <ion-content id="menu-content1">
+<ion-content id="menu-content">
 
-    <ion-header style="position: fixed; top: 0px !important;">
-      <ion-toolbar>
-        <ion-title>
-          <ion-icon name="menu" style="position: relative; top: 4px;" (click)="openMenu()"></ion-icon><span
-            style="position: relative; left: 20px;">Mobile e-load</span>
-        </ion-title>
-      </ion-toolbar>
-    </ion-header>
+  <div class="container">
+    <h4>
+      Provide Information
+    </h4>
+    <div class="limit">
+      <ion-row>
+        <ion-col size="4" *ngFor="let item of charges">
+          <div class="borderLimit" (click)="chargeAmount(item)" [class.active]="amount === item"
+            [class.inactive]="amount !== item">
+            <h6>{{item}}</h6>
+          </div>
+        </ion-col>
 
-    <div class="container">
-      <h4>
-        Provide Information
-      </h4>
-      <div class="limit">
-        <ion-row>
-          <ion-col size="4" *ngFor="let item of charges">
-            <div class="borderLimit" (click)="chargeAmount(item)" [class.active]="amount === item"
-              [class.inactive]="amount !== item">
-              <h6>{{item}}</h6>
-            </div>
-          </ion-col>
-
-        </ion-row>
-        <div class="divider"></div>
-        <div class="divider"></div>
-        <div class="divider"></div>
-        <div class="divider"></div>
-      </div>
-
-      <div class="footer">
-        <div class="input">
-          <label for="BillingAddress">Load Amount</label>
-          <ion-input id="BillingAddress" type="number" autocomplete="off" [(ngModel)]="amount"></ion-input>
-        </div>
-        <br>
-        <div class="input">
-          <label for="BillingAddress">Subscriber Number</label>
-          <ion-input id="BillingAddress" type="tel" autocomplete="off" [(ngModel)]="number" placeholder="03xx-xxxxxxx"></ion-input>
-        </div>
-        <br>
-        <ion-button (click)="submit()">Continue</ion-button>
-        <br>
-      </div>
+      </ion-row>
+      <div class="divider"></div>
+      <div class="divider"></div>
+      <div class="divider"></div>
+      <div class="divider"></div>
     </div>
 
-  </ion-content>
-</ion-split-pane>
+    <div class="footer">
+      <div class="input">
+        <label for="BillingAddress">Load Amount</label>
+        <ion-input id="BillingAddress" type="number" autocomplete="off" [(ngModel)]="amount"></ion-input>
+      </div>
+      <br>
+      <div class="input">
+        <label for="BillingAddress">Subscriber Number</label>
+        <ion-input id="BillingAddress" type="tel" autocomplete="off" [(ngModel)]="number" placeholder="03xx-xxxxxxx">
+        </ion-input>
+      </div>
+      <br>
+      <ion-button (click)="submit()">Continue</ion-button>
+      <br>
+    </div>
+  </div>
+
+</ion-content>

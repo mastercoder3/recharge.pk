@@ -1,40 +1,15 @@
-<ion-split-pane contentId="menu-content2">
-  <!--  our side menu  -->
-  <ion-menu contentId="menu-content2">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title style="color: #5b0101;">Options</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <ul style="list-style: none; padding: 0px 0px 0px 0px;">
-        <li style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;"
-          (click)="navigateHome()"> Home
-        </li>
-        <li style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;"
-          (click)="navigateTopUp()"> Top Up
-        </li>
-        <li style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;"
-          (click)="navigateTransaction()"> Transaction History
-        </li>
-        <li style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;"
-          (click)="logout()"> Log Out
-        </li>
-      </ul>
-    </ion-content>
-  </ion-menu>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button style="color: white;"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Top Up your Account
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
-
-  <ion-content id="menu-content2">
-
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>
-          <ion-icon name="menu" style="position: relative; top: 4px;" (click)="openMenu()"></ion-icon><span
-            style="position: relative; left: 20px;">Top Up your Account</span>
-        </ion-title>
-      </ion-toolbar>
-    </ion-header>
+  <ion-content id="menu-content">
 
     <div class="container">
       <br>
@@ -66,5 +41,3 @@
     </div>
 
   </ion-content>
-
-</ion-split-pane>
