@@ -15,6 +15,7 @@ export class RechargePage implements OnInit {
   charges=[];
   amount=0;
   number='';
+  userData; 
 
   constructor(private menu: MenuController, private navigation: NavController, private route: ActivatedRoute, private api: ApiService, private helper: HelperService) { }
 
@@ -32,6 +33,11 @@ export class RechargePage implements OnInit {
           });
       }
     });
+
+    this.api.getUser(localStorage.getItem('uid'))
+    .subscribe(res =>{
+      this.userData = res;
+  });
   }
 
   submit(){

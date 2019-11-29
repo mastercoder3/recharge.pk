@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button style="color: white;"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Profile
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+  <ion-content id="menu-content">
+
+    <div class="container">
+      <br>
+      <h5>Your Information</h5>
+      <!-- <form> -->
+        <div class="input">
+          <label for="BillingAddress">Name</label>
+          <ion-input id="BillingAddress" type="text" autocomplete="off" placeholder="50" [(ngModel)]="userData.name"></ion-input>
+        </div>
+        <br>
+        <div class="input">
+          <label for="BillingAddress">Contact Number</label>
+          <ion-input id="BillingAddress" type="tel" autocomplete="off" placeholder="xxxxxxxxx" [(ngModel)]="userData.phone" maxLength="9"></ion-input>
+        </div>
+        <br>
+        <ion-button (click)="submit()">Update</ion-button>
+      <!-- </form> -->
+      <br>
+      <h5>Change Password</h5>
+      <div class="input">
+        <label for="BillingAddress">New Password</label>
+        <ion-input id="BillingAddress" type="password" autocomplete="off" placeholder="50" [(ngModel)]="password"></ion-input>
+      </div>
+      <br>
+      <ion-button (click)="changePassword()">Change</ion-button>
+    </div>
+
+  </ion-content>

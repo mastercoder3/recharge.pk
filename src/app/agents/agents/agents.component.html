@@ -3,7 +3,11 @@
     <ion-menu contentId="menu-content" >
       <ion-header>
         <ion-toolbar>
-          <ion-title style="color: #5b0101;">Options</ion-title>
+          <ion-title style="color: #5b0101;">{{userData?.name}}
+            <br>
+            <small>{{userData?.phone ? '+971'+userData?.phone : ''}}</small>
+          </ion-title>
+
         </ion-toolbar>
       </ion-header>
       <ion-content>
@@ -16,6 +20,9 @@
           </li>
           <li style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;"
             (click)="navigateTransaction()"> Transaction History
+          </li>
+          <li style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;"
+            (click)="navigateProfile()"> Profile
           </li>
           <li style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;"
             (click)="logout()"> Log Out

@@ -32,6 +32,10 @@ const routes: Routes = [
       {
         path: 'top-up',
         loadChildren: () => import('./agents/top-up/top-up.module').then( m => m.TopUpPageModule)
+      },
+      {
+        path: 'profile',
+        loadChildren: () => import('./agents/profile/profile.module').then( m => m.ProfilePageModule)
       }
     ]
   },

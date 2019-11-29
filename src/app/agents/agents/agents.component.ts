@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController, NavController } from '@ionic/angular';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-agents',
@@ -8,9 +9,21 @@ import { MenuController, NavController } from '@ionic/angular';
 })
 export class AgentsComponent implements OnInit {
 
-  constructor(private menu: MenuController, private navigation: NavController) { }
+  userData;
 
-  ngOnInit() {}
+  constructor(private menu: MenuController, private navigation: NavController, private api: ApiService) { }
+
+  ngOnInit() {
+    this.api.getUser(localStorage.getItem('uid'))
+      .subscribe(res =>{
+        this.userData = res;
+      });
+  }
+
+  navigateProfile(){
+    this.menu.close();
+    this.navigation.navigateForward('agent/profile');
+  }
 
   navigateTopUp(){
     this.menu.close();
