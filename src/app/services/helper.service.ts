@@ -136,6 +136,59 @@ export class HelperService {
     await alert.present();
   }
 
+  async presentAlertTwoInputs(header,message, value1, value2, btnText, func, del?, btnText2?, func2?) {
+
+    const buttons: Array<any> = [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: (blah) => {
+          console.log('Confirm Cancel: blah');
+        }
+      }
+    ];
+
+    if(del === true){
+      buttons.push({
+        text: btnText2,
+        handler: func2
+      });
+      buttons.push({
+        text: btnText,
+        handler: func
+      });
+    }
+    else{
+      buttons.push({
+        text: btnText,
+        handler: func
+      });
+    }
+
+    const alert = await this.alertController.create({
+      header: header,
+      message: message,
+      inputs: [
+        {
+          name: 'amount',
+          type: 'number',
+          value: value1,
+          placeholder: 'Amount'
+        },
+        {
+          name: 'text',
+          type: 'text',
+          value: value2,
+          placeholder: 'Text for Input'
+        }
+      ],
+      buttons: buttons
+    });
+
+    await alert.present();
+  }
+
   async presentAlertMessage(h,m,t1,t2,func) {
     this.active = true;
     const alert = await this.alertController.create({

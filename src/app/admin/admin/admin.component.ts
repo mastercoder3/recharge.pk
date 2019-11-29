@@ -33,6 +33,11 @@ export class AdminComponent implements OnInit {
     this.navigation.navigateForward('admin/transactions');
   }
 
+  navigateSettings(){
+    this.menu.close();
+    this.navigation.navigateForward('admin/settings');
+  }
+
   navigateProfile(){
     this.menu.close();
     this.navigation.navigateForward('admin/profile');

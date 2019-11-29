@@ -67,4 +67,12 @@ export class ApiService {
   updateTopupRequest(id,data){
     return this.afs.doc('topup/'+id).update(data);
   }
+
+  getAllSettings(){
+    return this.afs.collection('settings').snapshotChanges();
+  }
+
+  updateSettingById(id,data){
+    return this.afs.doc('settings/'+id).update(data);
+  }
 }

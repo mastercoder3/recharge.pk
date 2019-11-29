@@ -1,9 +1,67 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>settings</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
-</ion-content>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button style="color: white;"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Settings
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+    <ion-content id="menu-content">
+  
+      <div class="container">
+        <br>
+        <h5>Change Carriers Data
+          <span style="float: right; position: relative; right: 20px;">
+            <img src="assets/{{type}}.png" alt="" style="width: 60px;">
+          </span>
+        </h5>
+        <div class="input">
+          <label for="BillingAddress">Choose a Carrier</label>
+          <ion-select placeholder="Select One" [(ngModel)]="type" (ngModelChange)="typeChanged()">
+              <ion-select-option value="jazz">Jazz/Warid</ion-select-option>
+              <ion-select-option value="telenor">Telenor</ion-select-option>
+              <ion-select-option value="ufone">Ufone</ion-select-option>
+              <ion-select-option value="zong">Zong</ion-select-option>
+            </ion-select>
+        </div>
+        <br>
+        <h5>
+          <span style="float: left; position: relative; left: 20px;" *ngIf="currentData.length > 0">
+            Packages List
+          </span>
+          <span style="float: right; position: relative; right: 20px;" *ngIf="type !== ''" (click)="addNew()" >
+              <ion-icon name="add-circle-outline" style="position: relative; top: 4px;"></ion-icon>&nbsp;Add New
+          </span>
+        </h5>
+        <br>
+        <ion-list style="width: 100% !important;">
+            <ion-item-sliding *ngFor="let item of currentData; let i = index;">
+              <ion-item>
+                <ion-label>
+                  <ion-icon name="arrow-round-up" style="position: absolute; right: 25px; font-size: 1.5em;" (click)="moveUp(i)" *ngIf="i !== 0"></ion-icon>
+                  <ion-icon name="arrow-round-down" style="position: absolute; right: 5px; font-size: 1.5em;" (click)="moveDown(i)" *ngIf="i !== currentData.length-1" ></ion-icon>
+                  <h6>Amount: {{item?.amount}}</h6>
+                  <br>
+                  <h6>
+                    Text: {{item?.text}}
+                  </h6>
+                </ion-label>
+              </ion-item>
+              <ion-item-options side="end">
+                <ion-item-option (click)="edit(item,i)">Edit</ion-item-option>
+              </ion-item-options>
+            </ion-item-sliding>
+          </ion-list>
+        <!-- <br>
+        <div class="input">
+          <label for="BillingAddress">Confirm Password</label>
+          <ion-input id="BillingAddress" type="password" autocomplete="off" placeholder="New Password" [(ngModel)]="confirmPassword"></ion-input>
+        </div> -->
+        <!-- <br>
+        <ion-button (click)="changePassword()">Change</ion-button> -->
+      </div>
+  
+    </ion-content>
