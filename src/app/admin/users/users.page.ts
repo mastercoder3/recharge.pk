@@ -51,16 +51,19 @@ export class UsersPage implements OnInit {
     this.currentUser = item;
     let myfunc = (data) =>{
       if(data.balance >= 0){
-        this.currentUser.balance = data.balance;
-        this.helper.presentLoading();
-        this.api.updateUser(this.currentUser.did, this.currentUser)
-          .then(res =>{
-            this.helper.closeLoading();
-            this.helper.presentToast('User Balance Updated');
-          }, err =>{
-            this.helper.closeLoading();
-            this.helper.presentToast(err.message);
-          });
+        let func2 = () =>{
+          this.currentUser.balance = data.balance;
+          this.helper.presentLoading();
+          this.api.updateUser(this.currentUser.did, this.currentUser)
+            .then(res =>{
+              this.helper.closeLoading();
+              this.helper.presentToast('User Balance Updated');
+            }, err =>{
+              this.helper.closeLoading();
+              this.helper.presentToast(err.message);
+            });
+        };
+        this.helper.presentAlertMessage('Balance Updation', 'Are you sure you want to Change Balance?','No','Yes', func2);
       }
       else{
         this.helper.presentToast('Please provide with valid balance.');

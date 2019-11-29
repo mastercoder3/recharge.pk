@@ -35,7 +35,7 @@ export class SettingsPage implements OnInit {
 
   addNew(){
     let func = (data) =>{
-      if(data.amount > 5){
+      if(data.amount >= 5){
         this.helper.presentLoading();
         this.currentData.push({
           amount: data.amount,
@@ -70,7 +70,7 @@ export class SettingsPage implements OnInit {
 
   edit(item,index){
     let func = (data) =>{
-      if(data.amount > 5){
+      if(data.amount >= 5){
         this.helper.presentLoading();
         this.currentData.push({
           amount: data.amount,
