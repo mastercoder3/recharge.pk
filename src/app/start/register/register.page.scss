@@ -3,17 +3,17 @@ ion-content{
     --height: 100%;
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
-    // --background: url('../../../assets/start.jpg') 0 0/100% 100% no-repeat fixed;
-    // --background-size: cover;
-    --background: #0B471F !important;
+    --background: url('../../../assets/bg4.jpg') 0 0/100% 100% no-repeat fixed;
+    --background-size: cover;
+    // --background: #0B471F !important;
 
     .container{
         width: 100%;
         height: 100%;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
-        // background: url('../../../assets/start.jpg') 0 0/100% 100% no-repeat fixed;
-        // background-size: cover;
+        background: url('../../../assets/bg4.jpg') 0 0/100% 100% no-repeat fixed;
+        background-size: cover;
 
         ion-input[type=tel]:before {
             content: "+971";
@@ -58,7 +58,7 @@ ion-content{
             }
         
             ion-button{
-                --background: #5b0101;
+                --background: #22543f;
                 --background-activated: #A52A2A;
                 --border-radius: 5px !important;
                 width: 90%;
@@ -80,7 +80,7 @@ ion-content{
             position: relative;
             bottom: 10px;
             ion-button{
-                --background: #5b0101;
+                --background: #22543f;
                 --background-activated: #A52A2A;
                 --border-radius: 5px !important;
                 width: 90%;
