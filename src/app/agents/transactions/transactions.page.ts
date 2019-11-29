@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController, NavController } from '@ionic/angular';
+import {  NavController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api.service';
 import { HelperService } from 'src/app/services/helper.service';
 import { map } from 'rxjs/operators';
@@ -20,9 +20,14 @@ export class TransactionsPage implements OnInit {
   searchTopups=[];
   searchRecharge=[];
 
-  constructor(private menu: MenuController, private navigation: NavController, private api: ApiService, private helper: HelperService) { }
+  constructor( private navigation: NavController, private api: ApiService, private helper: HelperService) { }
 
   ngOnInit() {
+
+    let x = new Date();
+    this.start = this.helper.convertDate(new Date(x.setDate(x.getDate() - 3)));
+    this.end = this.helper.convertDate(new Date());
+
     this.api.getUser(localStorage.getItem('uid'))
       .subscribe(res =>{
         this.userData = res;
@@ -36,6 +41,7 @@ export class TransactionsPage implements OnInit {
       })))
       .subscribe( (res: Array<any> ) =>{
         this.topups = res;
+        this.searchTopups = this.topups.filter(data => data.date >= this.helper.convertDate(new Date(this.start)) && data.date <= this.helper.convertDate(new Date(this.end)));
       });
 
     this.api.getAllRechargeRequestsById(localStorage.getItem('uid'))
@@ -46,6 +52,7 @@ export class TransactionsPage implements OnInit {
       })))
       .subscribe( (res: Array<any> ) =>{
         this.rechrage = res;
+        this.searchRecharge = this.rechrage.filter(data => data.date >= this.helper.convertDate(new Date(this.start)) && data.date <= this.helper.convertDate(new Date(this.end)))
       });
   }
 
@@ -60,33 +67,6 @@ export class TransactionsPage implements OnInit {
     }
   }
 
-  openMenu(){
-    this.menu.open();
-  }
-
-  navigateTopUp(){
-    this.menu.close();
-    this.navigation.pop().then(res =>{
-      this.navigation.navigateForward('agent/top-up')
-    });
-  }
-
-  navigateHome(){
-    this.menu.close();
-    this.navigation.pop()
-      .then(res =>{
-        this.navigation.navigateRoot('agent/home');
-      });
-  }
-
-  navigateTransaction(){
-    this.menu.close();
-  }
-
-  logout(){
-    localStorage.clear();
-    this.navigation.navigateRoot('login');
-  }
 
   changeTab(val){
     this.currentTab = val;
