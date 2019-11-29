@@ -21,6 +21,7 @@ import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
 import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 import { ImageViewerComponent } from './shared/image-viewer/image-viewer.component';
 import { AgentsComponent } from './agents/agents/agents.component';
@@ -41,6 +42,7 @@ import { AdminComponent } from './admin/admin/admin.component';
     Camera,
     Clipboard,
     FirebaseX,
+    ScreenOrientation,
     LocalNotifications,
     AndroidPermissions,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
