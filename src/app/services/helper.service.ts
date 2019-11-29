@@ -8,6 +8,7 @@ import { NotificationComponent } from '../shared/notification/notification.compo
 export class HelperService {
 
   loading;
+  active = false;
 
   constructor(private toastController: ToastController, private loadingController: LoadingController, private alertController: AlertController, private modal: ModalController, private actionSheetCtrl: ActionSheetController) { }
 
@@ -127,6 +128,30 @@ export class HelperService {
           }
         }, {
           text: btnText,
+          handler: func
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  async presentAlertMessage(h,m,t1,t2,func) {
+    this.active = true;
+    const alert = await this.alertController.create({
+      header: h,
+      message: m,
+      buttons: [
+        {
+          text: t1,
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+            this.active = false;
+          }
+        }, {
+          text: t2,
           handler: func
         }
       ]
