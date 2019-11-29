@@ -22,6 +22,10 @@ export class LoginPage implements OnInit {
       email: ['', Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.required]
     });
+
+    if(localStorage.getItem('uid') && localStorage.getItem('email')){
+      this.form.controls['email'].setValue(localStorage.getItem('email'));
+    }
     
     this.platform.backButton.subscribe( () =>{
       if(this.helper.active === false){
@@ -50,12 +54,14 @@ export class LoginPage implements OnInit {
             if(this.userData.type === 'agent'){
               this.helper.closeLoading();
               localStorage.setItem('uid',res.user.uid);
-              localStorage.setItem('type',this.userData.type)
+              localStorage.setItem('email',form.value.email);
+              localStorage.setItem('type',this.userData.type);
               this.navigation.navigateRoot('agent/home');
             }
             else if(this.userData.type === 'admin'){
               this.helper.closeLoading();
               localStorage.setItem('uid',res.user.uid);
+              localStorage.setItem('email',form.value.email);
               localStorage.setItem('type',this.userData.type)
               this.navigation.navigateRoot('admin/home');
             }
