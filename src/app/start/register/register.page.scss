@@ -15,6 +15,11 @@ ion-content{
         // background: url('../../../assets/start.jpg') 0 0/100% 100% no-repeat fixed;
         // background-size: cover;
 
+        ion-input[type=tel]:before {
+            content: "+971";
+            padding-left: 10px;
+        }
+
         .header{
             position: relative;
             top: 8%;

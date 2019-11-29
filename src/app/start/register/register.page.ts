@@ -21,7 +21,7 @@ export class RegisterPage implements OnInit {
       password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
       repeatPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
       name: ['', Validators.required],
-      phone: ['', Validators.compose([Validators.minLength(10), Validators.required])]
+      phone: ['', Validators.compose([Validators.minLength(9), Validators.required])]
     });
   }
 
