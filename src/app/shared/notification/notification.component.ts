@@ -41,7 +41,7 @@ export class NotificationComponent implements OnInit {
 
   confirmRecharge(){
     let commissionAmount = (2.5 * this.data.amount) / 100;
-    this.userData.balance += commissionAmount;
+    this.userData.balance = this.userData.balance + commissionAmount;
     this.data.status = 'completed';
     this.presentLoading();
     this.api.updateRequestById(this.data.did, this.data)
@@ -97,7 +97,9 @@ export class NotificationComponent implements OnInit {
         uid: localStorage.getItem('uid'),
         date: this.convertDate(new Date()),
         time: this.converTime(new Date()),
-        status: 'pending'
+        status: 'pending',
+        name: this.userData.name,
+        phone: this.userData.phone
       };
 
       this.presentLoading();

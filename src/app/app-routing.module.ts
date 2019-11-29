@@ -50,6 +50,10 @@ const routes: Routes = [
       {
         path: 'users',
         loadChildren: () => import('./admin/users/users.module').then( m => m.UsersPageModule)
+      },
+      {
+        path: 'transactions',
+        loadChildren: () => import('./admin/transactions/transactions.module').then( m => m.TransactionsPageModule)
       }
     ]
   }

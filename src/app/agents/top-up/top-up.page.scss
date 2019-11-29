@@ -18,6 +18,11 @@ ion-content{
         width: 100%;
         height: 100%;
 
+        ion-input[type=tel]:before {
+            content: "+971";
+            padding-left: 10px;
+        }
+
         .topHeader{
             position: relative;
             top: 0px;

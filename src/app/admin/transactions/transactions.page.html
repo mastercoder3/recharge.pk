@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Transactions</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div class="container">
+        <div class="rangeHeader">
+          <ion-row>
+            <ion-col size="6">
+              &nbsp;&nbsp;
+              <ion-icon name="calendar"></ion-icon>
+              <ion-datetime cancelText="Cancel" doneText="Okay" display-format="DD-MM-YYYY" max="2021"
+                placeholder="DD-MM-YYY" [(ngModel)]="start" pickerFormat="DD-MM-YYYY"></ion-datetime>
+            </ion-col>
+            <ion-col size="6">
+              &nbsp;&nbsp;
+              <ion-icon name="calendar"></ion-icon>
+              <ion-datetime cancelText="Cancel" doneText="Okay" display-format="DD-MM-YYYY" max="2021"
+                placeholder="DD-MM-YYY" [(ngModel)]="end" pickerFormat="DD-MM-YYYY"></ion-datetime>
+            </ion-col>
+          </ion-row>
+          <br>
+          <p style="text-align: center;"><a (click)="search()">Search</a></p>
+        </div>
+        <br>
+        <div class="tab">
+          <a style="text-align: center; border-radius: 4px 0px 0px 4px;" [class.activeTab]="currentTab === 'top' "
+            [class.disabledTab]="currentTab !== 'top' " (click)="changeTab('top')">Top-Ups</a>
+          <a style="text-align: center; border-radius: 0px 4px 4px 0px;" [class.activeTab]="currentTab === 'load' "
+            [class.disabledTab]="currentTab !== 'load' " (click)="changeTab('load')">e-Load</a>
+        </div>
+  
+        <div class="content" [ngSwitch]="currentTab">
+          <div *ngSwitchCase="'top'" style="width: 100%; height: 100%;">
+              <ion-list>
+                  <ion-item *ngFor="let item of searchTopups" [class.pending]="item.status === 'pending' " >
+                    <ion-label>
+                      <small>{{item?.date}} - {{item?.time}}</small>
+                      <h5>
+                          <span style="float: left;">Name: {{item?.name}}</span>
+                          <span style="float: right;">Phone: {{item?.phone }}</span>
+                      </h5>
+                      <br>
+                      <h5>
+                        <span style="float: left;">Status: {{item?.status}}</span>
+                        <span style="float: right;">Amount: AED {{item?.amount | number : '1.2-2'}}</span>
+                      </h5>
+                      <br>
+                      <h5>
+                        Type: {{item?.type ? item?.type : 'Cash-In'}}
+                      </h5>
+                    </ion-label>
+                  </ion-item>
+              </ion-list>
+          </div>
+          <div *ngSwitchCase="'load'" style="width: 100%; height: 100%;">
+              <ion-list>
+                  <ion-item *ngFor="let item of searchRecharge" [class.pending]="item.status === 'pending' " >
+                    <ion-label>
+                      <small>{{item?.date}} - {{item?.time}}</small>
+                      <h5>
+                          <span style="float: left;">Name: {{item?.name}}</span>
+                          <span style="float: right;">Phone: {{item?.phone }}</span>
+                      </h5>
+                      <br>
+                      <h5>
+                        <span style="float: left;"><strong>Status:</strong> {{item?.status}}</span>
+                        <span style="float: right;"><strong>Amount:</strong> AED {{item?.amount | number : '1.2-2'}}</span>
+                      </h5>
+                      <br>
+                      <h5>
+                          <span style="float: left;"><strong>Load:</strong> {{item?.type | titlecase}}</span>
+                          <span style="float: right;"><strong>To:</strong> {{item?.number}}</span>
+                        </h5>
+                    </ion-label>
+                  </ion-item>
+              </ion-list>
+            </div>
+        </div>
+      </div>
+
+</ion-content>

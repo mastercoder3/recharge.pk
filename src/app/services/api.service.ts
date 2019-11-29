@@ -36,6 +36,10 @@ export class ApiService {
     return this.afs.collection('requests', ref => ref.where('uid','==',id)).snapshotChanges();
   }
 
+  getAllRechargeRequests(){
+    return this.afs.collection('requests').snapshotChanges();
+  }
+
   getAllPendingRechargeRequests(){
     return this.afs.collection('requests', ref => ref.where('status','==','pending')).snapshotChanges();    
   }
@@ -50,6 +54,10 @@ export class ApiService {
 
   getAllTopUpRequestsById(id){
     return this.afs.collection('topup', ref => ref.where('uid','==',id)).snapshotChanges();
+  }
+
+  getAllTopUpRequests(){
+    return this.afs.collection('topup').snapshotChanges();
   }
 
   getAllPendingTopUpRequests(){
