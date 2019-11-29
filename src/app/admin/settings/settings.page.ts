@@ -72,10 +72,8 @@ export class SettingsPage implements OnInit {
     let func = (data) =>{
       if(data.amount >= 5){
         this.helper.presentLoading();
-        this.currentData.push({
-          amount: data.amount,
-          text: data.text
-        })
+        this.currentData[index].amount = data.amount;
+        this.currentData[index].text = data.text;
         this.api.updateSettingById(this.type,{charge: this.currentData})
           .then(res =>{
             this.helper.closeLoading();
