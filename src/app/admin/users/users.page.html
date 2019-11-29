@@ -1,58 +1,35 @@
-<ion-split-pane contentId="menu-content01">
-    <!--  our side menu  -->
-    <ion-menu contentId="menu-content01" menuId="menu-content01">
-      <ion-header>
-        <ion-toolbar>
-          <ion-title style="color: #5b0101;">Options</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content>
-        <ul style="list-style: none; padding: 0px 0px 0px 0px;">
-          <li style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;"
-            (click)="navigateHome()"> Home
-          </li>
-          <li style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;"
-            (click)="navigateUpdation()"> Update Credit
-          </li>
-          <li style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;"
-            (click)="logout()"> Log Out
-          </li>
-        </ul>
-      </ion-content>
-    </ion-menu>
-  
-  
-  
-    <ion-content id="menu-content01">
-  
-      <ion-header>
-        <ion-toolbar>
-          <ion-title>
-            <ion-icon name="menu" style="position: relative; top: 4px;" (click)="openMenu()"></ion-icon><span
-              style="position: relative; left: 20px;">Activities</span>
-          </ion-title>
-        </ion-toolbar>
-      </ion-header>
-  
-  
-      <div class="container">
-        <h5>Agents Information</h5>
-        <br>
-        <ion-list>
-            <ion-item *ngFor="let item of users" (click)="changeBalance(item)" >
-              <ion-label>
-                <h1>{{item?.name}}</h1>
-                <h6>Phone: {{item?.phone}}</h6>
-                <h6>Email: {{item?.email}}</h6>
-                <h6>
-                  <span style="float: left;">Type: {{item?.type}}</span>
-                  <span style="float: right;">Balance: AED {{item?.balance | number : '1.2-2'}}</span>
-                </h6>
-              </ion-label>
-            </ion-item>
-            </ion-list>
-      </div>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button style="color: white;"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Users
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content id="">
+
+
+  <div class="container">
+    <h5>Agents Information</h5>
+    <br>
+    <ion-list>
+      <ion-item *ngFor="let item of users" (click)="changeBalance(item)">
+        <ion-label>
+          <h1>{{item?.name}}</h1>
+          <h6>Phone: {{item?.phone}}</h6>
+          <h6>Email: {{item?.email}}</h6>
+          <h6>
+            <span style="float: left;">Type: {{item?.type}}</span>
+            <span style="float: right;">Balance: AED {{item?.balance | number : '1.2-2'}}</span>
+          </h6>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
 
 </ion-content>
-
-</ion-split-pane>

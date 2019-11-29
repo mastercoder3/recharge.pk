@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AgentsComponent } from './agents/agents/agents.component';
+import { AdminComponent } from './admin/admin/admin.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -34,18 +35,21 @@ const routes: Routes = [
       }
     ]
   },
-  // {
-  //   path: 'agent/home',
-  //   loadChildren: () => import('./agents/home/home.module').then( m => m.HomePageModule)
-  // },
   {
-    path: 'admin/home',
-    loadChildren: () => import('./admin/home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: 'admin/users',
-    loadChildren: () => import('./admin/users/users.module').then( m => m.UsersPageModule)
-  },
+    path: 'admin',
+    component: AdminComponent,
+    children:[
+      {
+        path: 'home',
+        loadChildren: () => import('./admin/home/home.module').then( m => m.HomePageModule)
+      },
+      {
+        path: 'users',
+        loadChildren: () => import('./admin/users/users.module').then( m => m.UsersPageModule)
+      }
+    ]
+  }
+  
 ];
 
 @NgModule({

@@ -1,0 +1,25 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" >
+      <ion-header>
+        <ion-toolbar>
+          <ion-title style="color: #5b0101;">Options</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ul style="list-style: none; padding: 0px 0px 0px 0px;">
+          <li style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;"
+            (click)="navigateHome()"> Home
+          </li>
+          <li style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;"
+            (click)="navigateUpdation()"> Update Credit
+          </li>
+          <li style="padding-left: 10px; border-bottom: 0.5px solid #9c9c9c; min-height: 35px; padding-top: 8px;"
+            (click)="logout()"> Log Out
+          </li>
+        </ul>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>
