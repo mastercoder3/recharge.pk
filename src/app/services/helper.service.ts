@@ -136,6 +136,36 @@ export class HelperService {
     await alert.present();
   }
 
+  async presentAlertOneInput(header,message,type,placeholder, value, btnText, func) {
+    const alert = await this.alertController.create({
+      header: header,
+      message: message,
+      inputs: [
+        {
+          name: 'info',
+          type: type,
+          value: value,
+          placeholder: placeholder
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: btnText,
+          handler: func
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
   async presentAlertTwoInputs(header,message, value1, value2, btnText, func, del?, btnText2?, func2?) {
 
     const buttons: Array<any> = [

@@ -25,6 +25,7 @@ export class TopUpPage implements OnInit {
   task: AngularFireUploadTask;
   data;
   userData;
+  walletText='';
 
   constructor(private menu: MenuController, private navigation: NavController, private camera: Camera,
     private androidPermissions: AndroidPermissions, private helper: HelperService, private fireStorage: AngularFireStorage, private api: ApiService) {
@@ -38,6 +39,13 @@ export class TopUpPage implements OnInit {
     this.api.getUser(localStorage.getItem('uid'))
       .subscribe(res =>{
         this.userData = res;
+      });
+    
+    this.api.getCarrierSettings('info')
+      .subscribe( (res:any) =>{
+        if(res.text){
+          this.walletText = res.text;
+        }
       });
   }
 
