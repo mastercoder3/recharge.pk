@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { HelperService } from 'src/app/services/helper.service';
-import * as firebase from 'firebase/app';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 
 @Component({
@@ -18,7 +18,7 @@ export class ProfilePage implements OnInit {
   password='';
   confirmPassword='';
 
-  constructor(private api: ApiService, private helper: HelperService) { }
+  constructor(private api: ApiService, private helper: HelperService, private auth: AngularFireAuth) {}
 
   ngOnInit() {
     this.api.getUser(localStorage.getItem('uid'))
@@ -46,25 +46,24 @@ export class ProfilePage implements OnInit {
       this.helper.presentToast('Password doesn\'t matches. Please try again.');
       return;
     }
-    if(this.password.length > 6){
+    if(this.password.length >= 6){
       this.helper.presentLoading();
-      firebase.auth().onAuthStateChanged( user => {
-        if(user){
-         user.updatePassword(this.password)
+      const afAuth = this.auth.auth;
+      const user = afAuth.currentUser;
+      if(user.uid){
+        user.updatePassword(this.password)
           .then(res =>{
-            this.helper.presentToast('Your Password Has been Changed.');
-            this.password = '';
-            this.helper.closeLoading()
+            this.helper.closeLoading();
+            this.helper.presentToast('Password Changed.');
           }, err =>{
             this.helper.closeLoading();
             this.helper.presentToast(err.message);
           })
-        }
-        else{
-          this.helper.presentToast('Cannot Change passowrd Right now, come back later.');
-        }
-        
-      });
+      }
+      else{
+        this.helper.closeLoading();
+        this.helper.presentToast('Cannot Change passowrd Right now, come back later.');
+      }
     }
     else{
       this.helper.presentToast('Password too short.');
