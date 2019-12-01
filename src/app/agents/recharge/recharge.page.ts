@@ -17,6 +17,7 @@ export class RechargePage implements OnInit {
   number='';
   userData; 
   text='';
+  rate=0;
 
   constructor(private menu: MenuController, private navigation: NavController, private route: ActivatedRoute, private api: ApiService, private helper: HelperService) { }
 
@@ -36,9 +37,16 @@ export class RechargePage implements OnInit {
     });
 
     this.api.getUser(localStorage.getItem('uid'))
-    .subscribe(res =>{
-      this.userData = res;
-  });
+      .subscribe(res =>{
+        this.userData = res;
+      });
+
+    this.api.getCarrierSettings('rate')
+      .subscribe( (res:any) =>{
+        if(res.conversion){
+          this.rate = res.conversion;
+        }
+      });
   }
 
   submit(){
@@ -52,7 +60,7 @@ export class RechargePage implements OnInit {
       return;
     }
     else{
-      this.helper.presentModal('load',{amount: this.amount, number: `03${this.number}`, type: this.type, text: this.text});
+      this.helper.presentModal('load',{amount: this.amount, number: `03${this.number}`, type: this.type, text: this.text !== '' ? this.text : `Pkr. ${this.amount * this.rate}`});
     }
   }
 

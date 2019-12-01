@@ -80,9 +80,12 @@ export class AdminComponent implements OnInit {
     this.menu.close();
 
     let func = (data) =>{
-      if(data.info){
+      if(data.info > 0){
         this.rate = data.info;
         this.api.updateSettingById('rate',{conversion: this.rate});
+      }
+      else{
+        this.helper.presentToast('Please provide with valid rate.');
       }
     };
 

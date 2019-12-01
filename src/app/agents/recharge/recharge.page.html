@@ -31,7 +31,8 @@
           <div class="borderLimit" (click)="chargeAmount(item)" [class.active]="amount === item"
             [class.inactive]="amount !== item">
             <h6>{{item?.amount}}</h6>
-            <p style="margin: 0px 0px 0px 0px; font-size: 0.7em; text-align: center; position: relative; top: 7px;">{{item?.text}}</p>
+            <p style="margin: 0px 0px 0px 0px; font-size: 0.7em; text-align: center; position: relative; top: 7px;" *ngIf="item?.text !== '' ">{{item?.text}}</p>
+            <p style="margin: 0px 0px 0px 0px; font-size: 0.7em; text-align: center; position: relative; top: 7px;" *ngIf="item?.text === '' ">Pkr. {{item?.amount * rate}}</p>
           </div>
         </ion-col>
 
