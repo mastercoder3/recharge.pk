@@ -33,7 +33,7 @@ export class ApiService {
   }
 
   getAllRechargeRequestsById(id){
-    return this.afs.collection('requests', ref => ref.where('uid','==',id)).snapshotChanges();
+    return this.afs.collection('requests', ref => ref.where('uid','==',id).orderBy('date','desc')).snapshotChanges();
   }
 
   getAllRechargeRequests(){
@@ -53,7 +53,7 @@ export class ApiService {
   }
 
   getAllTopUpRequestsById(id){
-    return this.afs.collection('topup', ref => ref.where('uid','==',id)).snapshotChanges();
+    return this.afs.collection('topup', ref => ref.where('uid','==',id).orderBy('date','desc')).snapshotChanges();
   }
 
   getAllTopUpRequests(){

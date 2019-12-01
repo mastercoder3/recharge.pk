@@ -34,17 +34,6 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
 
-    this.platform.backButton.subscribe( () =>{
-      if(this.helper.active === false){
-       let func = () =>{
-         this.helper.active = false;
-         navigator['app'].exitApp();
-       };
- 
-       this.helper.presentAlertMessage('Exit PayPak','Do you want to exit?','No','Yes', func);
-      }
-     });
-
     this.api.getAllPendingTopUpRequests()
     .pipe(map(actions => actions.map(a =>{
       const data = a.payload.doc.data();
@@ -76,6 +65,19 @@ export class HomePage implements OnInit {
 
   changeTab(val){
     this.currentTab = val;
+  }
+
+  ionViewDidEnter(){
+    this.platform.backButton.subscribe( () =>{
+      if(this.helper.active === false){
+       let func = () =>{
+         this.helper.active = false;
+         navigator['app'].exitApp();
+       };
+ 
+       this.helper.presentAlertMessage('Exit PayPak','Do you want to exit?','No','Yes', func);
+      }
+     });
   }
 
 }

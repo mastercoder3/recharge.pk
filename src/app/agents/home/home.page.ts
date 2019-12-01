@@ -42,16 +42,6 @@ export class HomePage implements OnInit {
         this.userData = res;
       });
 
-    this.platform.backButton.subscribe( () =>{
-     if(this.helper.active === false){
-      let func = () =>{
-        this.helper.active = false;
-        navigator['app'].exitApp();
-      };
-
-      this.helper.presentAlertMessage('Exit PayPak','Do you want to exit?','No','Yes', func);
-     }
-    });
   }
 
   changeCarrier(value){
@@ -61,5 +51,17 @@ export class HomePage implements OnInit {
     }]);
   }
   
+  ionViewDidEnter(){
+    this.platform.backButton.subscribe( () =>{
+      if(this.helper.active === false){
+       let func = () =>{
+         this.helper.active = false;
+         navigator['app'].exitApp();
+       };
+ 
+       this.helper.presentAlertMessage('Exit PayPak','Do you want to exit?','No','Yes', func);
+      }
+     });
+  }
 
 }
