@@ -47,6 +47,8 @@ export class TopUpPage implements OnInit {
           this.walletText = res.text;
         }
       });
+
+      this.date = this.helper.convertDate(new Date());
   }
 
   openMenu(){
@@ -157,7 +159,7 @@ export class TopUpPage implements OnInit {
     this.api.createTopUpRequest(this.data)
       .then(res =>{
         this.helper.closeLoading();
-        this.helper.presentToast('Your Topup Request is sent to Admin.');
+        this.helper.presentToast('Your Topup Request is Under-Processing.');
         this.navigation.navigateRoot('agent/home');
       }, err =>{
         this.helper.closeLoading();

@@ -71,9 +71,9 @@
           <h1>Top Up</h1>
           <p>{{userData?.name}}</p>
           <p>requested Top Up of {{data.amount | number : '1.2-2'}}</p>
-          <p>Phone#: {{data?.phone}}</p>
-          <p>User phone#: {{userData?.phone}}</p>
-          <img src="{{data?.imageURL}}" alt ="" style="    width: 200px;
+          <p>Phone#: 0{{data?.phone}}</p>
+          <p>User phone#: 0{{userData?.phone}}</p>
+          <img src="{{data?.imageURL}}" alt ="" style="width: 200px; height: 200px;
           margin: 0 auto;
           display: block;
           border-radius: 20px;" (click)="openImage()" >
@@ -91,12 +91,12 @@
               </div>
             </ion-col>
             <ion-col size="6" style="padding-right: 0px;">
-                <div style="border-top-left-radius: 10px" (click)="closeModal()" >
+                <div style="border-top-left-radius: 10px" (click)="RejectTopUpRequest()" >
                     <h5 style="position: relative; top: 10px;">
                         <ion-icon name="close-circle"></ion-icon>
                     </h5>
                     <h5>
-                      close
+                      Reject
                     </h5>
                   </div>
             </ion-col>

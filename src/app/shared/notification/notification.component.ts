@@ -194,4 +194,17 @@ export class NotificationComponent implements OnInit {
       });
   }
 
+  RejectTopUpRequest(){
+    this.presentLoading();
+    this.api.updateTopupRequest(this.data.did, {status: 'rejected'})
+      .then( res =>{
+        this.closeLoading();
+        this.presentToast('Top-Up request is cancelled');
+        this.closeModal();
+      }, err =>{
+        this.closeLoading();
+        this.presentToast(err.message);
+      });
+  }
+
 }

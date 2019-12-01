@@ -17,12 +17,12 @@
               Balance : AED {{userData?.balance | number : '1.2-2'}}
             </h6>
           </div>
-      <br>
-      <h5>Your Information</h5>
+      <h5>Provide Information</h5>
       <!-- <form> -->
         <div class="input">
           <label for="BillingAddress">Amount</label>
-          <ion-input id="BillingAddress" type="number" autocomplete="off" placeholder="50" [(ngModel)]="amount"></ion-input>
+          <ion-input id="BillingAddress" type="number" autocomplete="off" placeholder="Minimum of AED 20" [(ngModel)]="amount"></ion-input>
+          <small style="position: relative; left: 20px;">Minimum of AED 20.</small>
         </div>
         <br>
         <div class="input">
@@ -32,7 +32,7 @@
         <br>
         <div class="input">
           <label for="BillingAddress">Contact Number</label>
-          <ion-input id="BillingAddress" type="tel" autocomplete="off" placeholder="example: 051231234" [(ngModel)]="number" maxLength="9"></ion-input>
+          <ion-input id="BillingAddress" type="tel" autocomplete="off" placeholder="example: 51231234" [(ngModel)]="number" maxLength="9"></ion-input>
         </div>
         <br>
         <div class="input">
