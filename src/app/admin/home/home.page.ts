@@ -6,6 +6,7 @@ import { HelperService } from 'src/app/services/helper.service';
 import { FcmService } from 'src/app/services/fcm.service';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { tap } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,7 @@ export class HomePage implements OnInit {
   currentTab='top';  
   topups=[];
   rechrage=[];
+  backButton: Subscription;
 
   constructor( private navigation: NavController, private api: ApiService, private helper: HelperService, private fcm: FcmService, private localNotifications: LocalNotifications, private platform: Platform) { 
     this.fcm.getToken(localStorage.getItem('uid'));
@@ -68,16 +70,24 @@ export class HomePage implements OnInit {
   }
 
   ionViewDidEnter(){
-    this.platform.backButton.subscribe( () =>{
-      if(this.helper.active === false){
-       let func = () =>{
-         this.helper.active = false;
-         navigator['app'].exitApp();
-       };
- 
-       this.helper.presentAlertMessage('Exit PayPak','Do you want to exit?','No','Yes', func);
-      }
-     });
+    setTimeout( () =>{
+      this.backButton = this.platform.backButton.subscribe( () =>{
+        if(this.helper.active === false){
+         let func = () =>{
+           this.helper.active = false;
+           navigator['app'].exitApp();
+         };
+   
+         this.helper.presentAlertMessage('Exit PayPak','Do you want to exit?','No','Yes', func);
+        }
+       });
+       this.helper.active = false;
+    }, 500);
+  }
+
+  ionViewDidLeave(){
+    this.backButton.unsubscribe();
+    this.helper.active = true;
   }
 
 }

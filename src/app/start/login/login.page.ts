@@ -4,6 +4,7 @@ import { NavController, Platform } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { HelperService } from 'src/app/services/helper.service';
 import { ApiService } from 'src/app/services/api.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,7 @@ export class LoginPage implements OnInit {
 
   form: FormGroup;
   userData;
+  backButton: Subscription;
 
   constructor(private fb: FormBuilder, private navigation: NavController, private auth: AuthService, private helper: HelperService, private api: ApiService, private platform: Platform) { }
 
@@ -26,17 +28,6 @@ export class LoginPage implements OnInit {
     if(localStorage.getItem('uid') && localStorage.getItem('email')){
       this.form.controls['email'].setValue(localStorage.getItem('email'));
     }
-    
-    this.platform.backButton.subscribe( () =>{
-      if(this.helper.active === false){
-       let func = () =>{
-         this.helper.active = false;
-         navigator['app'].exitApp();
-       };
- 
-       this.helper.presentAlertMessage('Exit PayPak','Do you want to exit?','No','Yes', func);
-      }
-     });
   }
 
   navigateRegister(){
@@ -87,6 +78,27 @@ export class LoginPage implements OnInit {
     };
 
     this.helper.presentAlertPrompt(func);
+  }
+
+  ionViewDidEnter(){
+    setTimeout( () =>{
+      this.backButton = this.platform.backButton.subscribe( () =>{
+        if(this.helper.active === false){
+         let func = () =>{
+           this.helper.active = false;
+           navigator['app'].exitApp();
+         };
+   
+         this.helper.presentAlertMessage('Exit PayPak','Do you want to exit?','No','Yes', func);
+        }
+       });
+       this.helper.active = false;
+    }, 500);
+  }
+
+  ionViewDidLeave(){
+    this.backButton.unsubscribe();
+    this.helper.active = true;
   }
 
 }
