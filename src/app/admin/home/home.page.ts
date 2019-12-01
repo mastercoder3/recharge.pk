@@ -43,7 +43,16 @@ export class HomePage implements OnInit {
       return {did, ...data};
     })))
     .subscribe( (res: Array<any> ) =>{
-      this.topups = res;
+      this.topups = res.map(a => {return {temp: a.date+'-'+a.time, ...a}}).sort((a,b):any => {
+        if(a.temp > b.temp){
+          return -1;
+        }
+        if(a.temp < b.temp){
+          return 1;
+        }
+        return 0;
+      });
+      
     });
 
   this.api.getAllPendingRechargeRequests()
@@ -53,7 +62,15 @@ export class HomePage implements OnInit {
       return {did, ...data};
     })))
     .subscribe( (res: Array<any> ) =>{
-      this.rechrage = res;
+      this.rechrage = res.map(a => {return {temp: a.date+'-'+a.time, ...a}}).sort((a,b):any => {
+        if(a.temp > b.temp){
+          return -1;
+        }
+        if(a.temp < b.temp){
+          return 1;
+        }
+        return 0;
+      });
     });
   }
 
@@ -62,7 +79,7 @@ export class HomePage implements OnInit {
   }
 
   charge(item){
-    this.helper.presentModal('bal',item);    
+    this.helper.presentModal('bal',item);
   }
 
   changeTab(val){

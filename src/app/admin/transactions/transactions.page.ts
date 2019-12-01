@@ -37,13 +37,14 @@ export class TransactionsPage implements OnInit {
       .subscribe( (res: Array<any> ) =>{
         this.topups = res;
         this.searchTopups = this.topups.filter(data => data.date >= this.helper.convertDate(new Date(this.start)) && data.date <= this.helper.convertDate(new Date(this.end)));
-        this.searchTopups.map(a => {return {temp: a.date+'-'+a.time, ...a}}).sort((a,b):any => {
-          if(a.temp < b.temp){
+        this.searchTopups = this.searchTopups.map(a => {return {temp: a.date+'-'+a.time, ...a}}).sort((a,b):any => {
+          if(a.temp > b.temp){
             return -1;
           }
-          else{
+          if(a.temp < b.temp){
             return 1;
-        }
+          }
+          return 0;
         });
       });
 
@@ -57,12 +58,13 @@ export class TransactionsPage implements OnInit {
         this.rechrage = res.filter(data => data.status !== 'rejected');
         this.searchRecharge = this.rechrage.filter(data => data.date >= this.helper.convertDate(new Date(this.start)) && data.date <= this.helper.convertDate(new Date(this.end)));
         this.searchRecharge = this.searchRecharge.map(a => {return {temp: a.date+'-'+a.time, ...a}}).sort((a,b):any => {
-          if(a.temp < b.temp){
+          if(a.temp > b.temp){
             return -1;
           }
-          else{
+          if(a.temp < b.temp){
             return 1;
-        }
+          }
+          return 0;
         });
       });
   }
@@ -74,23 +76,25 @@ export class TransactionsPage implements OnInit {
     }
     else{
       this.searchTopups = this.topups.filter(data => data.date >= this.helper.convertDate(new Date(this.start)) && data.date <= this.helper.convertDate(new Date(this.end)));
-      this.searchTopups.sort((a,b):any => {
-        if(a.temp < b.temp){
+      this.searchTopups = this.searchTopups.map(a => {return {temp: a.date+'-'+a.time, ...a}}).sort((a,b):any => {
+        if(a.temp > b.temp){
           return -1;
         }
-        else{
+        if(a.temp < b.temp){
           return 1;
-      }
+        }
+        return 0;
       });
       this.searchRecharge = this.rechrage.filter(data => data.date >= this.helper.convertDate(new Date(this.start)) && data.date <= this.helper.convertDate(new Date(this.end)));
       this.searchRecharge = this.searchRecharge.map(a => {return {temp: a.date+'-'+a.time, ...a}}).sort((a,b):any => {
-          if(a.temp < b.temp){
-            return -1;
-          }
-          else if(a.temp > b.temp){
-            return 1;
-          }
-        });
+        if(a.temp > b.temp){
+          return -1;
+        }
+        if(a.temp < b.temp){
+          return 1;
+        }
+        return 0;
+      });
     }
   }
 
