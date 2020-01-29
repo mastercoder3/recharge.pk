@@ -41,7 +41,7 @@ export class NotificationComponent implements OnInit {
 
   confirmRecharge(){
     let commissionAmount = (2.5 * this.data.amount) / 100;
-    this.userData.balance = this.userData.balance + commissionAmount;
+    this.userData.balance = parseFloat(this.userData.balance) + (commissionAmount);
     this.data.status = 'completed';
     this.presentLoading();
     this.api.updateRequestById(this.data.did, this.data)
@@ -72,7 +72,7 @@ export class NotificationComponent implements OnInit {
   }
 
   rejectRecharge(){
-    this.userData.balance += this.data.amount;
+    this.userData.balance = parseFloat(this.userData.balance) +  parseFloat(this.data.amount);
     this.data.status = 'rejected';
     this.presentLoading();
     this.api.updateRequestById(this.data.did, this.data)
@@ -116,7 +116,7 @@ export class NotificationComponent implements OnInit {
 
       this.api.addNewRechargeRequest(data)
         .then(res =>{
-          this.userData.balance = this.userData.balance - this.data.amount;
+          this.userData.balance = parseFloat(this.userData.balance) - parseFloat(this.data.amount);
           this.api.updateUser(localStorage.getItem('uid'),this.userData);
           this.closeModal();
           this.closeLoading();
@@ -175,7 +175,7 @@ export class NotificationComponent implements OnInit {
   }
 
   confirmTopUp(){
-    this.userData.balance += this.data.amount;
+    this.userData.balance = parseFloat(this.userData.balance) + parseFloat(this.data.amount);
     this.data.status = 'completed';
     this.presentLoading();
     this.api.updateTopupRequest(this.data.did, this.data)
